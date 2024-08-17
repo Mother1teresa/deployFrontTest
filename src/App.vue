@@ -1,20 +1,8 @@
 <template>
-  <header>
-    <AppHeader />
-  </header>
+  <RouterView />
 </template>
 
-<script>
-import AppHeader from './components/AppHeader.vue';
-export default {
-components:{
-  AppHeader,
-}
-}
-</script>
+<script setup>
+import { RouterView } from 'vue-router'
 
-<style>
-body{
-  background: lavender;
-}
-</style>
+</script>
