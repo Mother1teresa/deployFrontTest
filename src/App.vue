@@ -1,8 +1,16 @@
 <template>
-  <RouterView />
+  <header>
+    <AppHeader />
+  </header>
 </template>
 
-<script setup>
-import { RouterView } from 'vue-router'
+<script>
+
 
 </script>
+
+<style>
+body{
+  background: rgba(174, 151, 232, 1);
+}
+</style>
