@@ -8,9 +8,9 @@
 </template>
 
 <script>
-import AppContent from './components/AppContent.vue';
-import AppHeader from './components/AppHeader.vue';
 
+import AppHeader from './components/AppHeader.vue';
+import AppContent from '@/components/AppContent.vue';
 export default {
   components:{
     AppHeader,

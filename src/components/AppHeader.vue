@@ -1,12 +1,20 @@
 <template>
-<div class="container-fluid">
+  <!-- <AppContent/> -->
+  <div class="container-fluid">
     <ul class="nav nav-control">
       <div class="nav-main">
         <li class="nav-item">
           <a class="logo-text" href="#">Elfen lied</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#"><span><img src="/src/assets/image/catalog.png" class="icon catalog" alt=""></span>Каталог</a>
+          <a class="nav-link" href="#"
+            ><span
+              ><img
+                src="/src/assets/image/catalog.png"
+                class="icon catalog"
+                alt="" /></span
+            >Каталог</a
+          >
         </li>
       </div>
       <div class="nav-interesting">
@@ -20,68 +28,86 @@
       <div class="nav-links-right">
         <div class="search">
           <li class="nav-item">
-            <a class="nav-link" href="#"><span><img src="/src/assets/image/search.png" class="icon search" alt=""></span>Поиск</a>
+            <a class="nav-link" href="#">
+              <span>
+                <img
+                  src="/src/assets/image/search.png"
+                  class="icon search"
+                  alt=""/> 
+                  </span>Поиск
+            </a>
           </li>
         </div>
-         <ModalBasket />
+        <ModalBasket />
       </div>
     </ul>
-    
   </div>
 </template>
 
 <script>
-import ModalBasket from './items/ModalBasket.vue';
-
+import ModalBasket from "./items/ModalBasket.vue";
+import AppContent from "@/components/AppContent.vue";
 export default {
-  components:{
+  components: {
     ModalBasket,
+    AppContent,
   },
 };
 </script>
 
 <style scoped>
-.container-fluid{
+.container-fluid {
+  position: relative;
   padding: 0 60px 0 60px;
+  z-index: 1;
 }
-.nav-control{
+.nav-control {
   justify-content: space-between;
   margin-top: 53px;
+  position: relative;
+  height: 54px;
+  z-index: 1;
 }
-.nav-control li, .search{
+.nav-control li,
+.search {
   align-content: center;
 }
 .nav-interesting,
 .personal {
   display: flex;
 }
-.logo-text{
+.logo-text {
   font-size: 45px;
-  font-family: 'Le Murmure', sans-serif;
-  font-weight: 600; 
-  padding: 0; 
+  font-family: "Le Murmure", sans-serif;
+  font-weight: 600;
+  padding: 0;
   color: rgba(255, 255, 255, 1);
   text-decoration: none;
 }
-.icon{
+.icon {
   margin-right: 12px;
   margin-bottom: 5px;
 }
-.nav-main{
+.nav-main {
   display: flex;
   gap: 133px;
 }
-.nav-links-right{
+.nav-links-right {
   display: flex;
-  gap: 247px;
+  gap: 180px;
 }
-.nav-link{
+.nav-link {
   color: rgba(255, 255, 255, 1);
-  font-family: 'Euclid Circular A', sans-serif;
+  font-family: "Euclid Circular A", sans-serif;
   font-size: 18px;
 }
-.catalog{
+.catalog {
   width: 15px;
   height: 15px;
+}
+@media (max-width: 1600px) {
+  .nav-links-right {
+    gap: 140px;
+  }
 }
 </style>

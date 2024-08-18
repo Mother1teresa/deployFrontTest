@@ -2,27 +2,27 @@
   <div class="personal">
     <li class="nav-item">
       <a class="nav-link" href="#">
-        <span><img src="/src/assets/image/favourites.png" alt="" /></span>
+        <span class="link"><img  src="/src/assets/image/favourites.png" alt="" /></span>
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="#">
-        <span><img src="/src/assets/image/profile.png" alt="" /></span>
+        <span class="link"><img src="/src/assets/image/profile.png" alt="" /></span>
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="#" @click="openModal">
-        <span><img src="/src/assets/image/basket.png" alt="" /></span>
+        <span class="link"><img  src="/src/assets/image/basket.png" alt="" /></span>
       </a>
     </li>
   </div>
   <transition name="slide">
     <div v-if="isModalOpen" class="modal-overlay" @click.self="closeModal">
       <div class="modal-content" @click.stop>
-        <div class="modal-title">Ваша корзина</div>
-        <button class="close-button" @click="closeModal">&times;</button>
-
-        
+        <div class="unification">
+          <div class="modal-title">Ваша корзина</div>
+          <button class="close-button" @click="closeModal">&times;</button>
+        </div>
         <div class="items">
           <div class="item" v-for="product in products" :key="product.id">
             <img :src="product.imageUrl" alt="Image" />
@@ -37,7 +37,7 @@
                 </div>
                 <a class="" href="#">
                   <span>
-                    <img src="/src/assets/image/basket-lime.png" alt="Basket" />
+                    <img class="basket-lime" src="/src/assets/image/basket-lime.png" alt="Basket" />
                   </span>
                 </a>
               </div>
@@ -103,7 +103,7 @@ export default {
           text: "Лампа настольная",
           result: "150 000",
         },
-      ], 
+      ],
     };
   },
   methods: {
@@ -118,12 +118,19 @@ export default {
 </script>
 
 <style scoped>
+
+.nav-item{
+  display: grid;
+  align-content: center;
+}
 .nav-interesting,
 .personal {
+  align-content: center;
   display: flex;
 }
 .personal {
-  margin-bottom: 10px;
+  gap: 36px;
+  margin-right: 30px;
 }
 .model-result {
   display: flex;
@@ -284,23 +291,25 @@ export default {
   transition: transform 0.7s ease;
   border-radius: 30px;
 }
+/* .unification{
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+} */
 .close-button {
   position: absolute;
-  width: 56px;
-  height: 56px;
+  width: 65px;
+  height: 65px;
   top: 0;
-  right: 0;
-  color: white;
+  right: 7px;
+  color: rgba(255, 255, 255, 0.826);
   background-color: transparent;
   border: none;
-  font-size: 28px;
+  font-size: 52px;
   cursor: pointer;
-  opacity: 0.6;
   transition: opacity 0.3s ease;
 }
-.close-button:hover {
-  opacity: 1;
-}
+
 .item {
   width: 523px;
   height: 145px;
@@ -325,6 +334,7 @@ export default {
   .modal-content {
     width: 450px;
     height: 550px;
+    padding: 30px;
   }
   .item {
     width: 100%;
@@ -343,6 +353,53 @@ export default {
     font-size: 18px;
     right: 22px;
     top: 21px;
+  }
+  .close-button {
+    font-size: 34px;
+  }
+  .item {
+    width: 370px;
+    height: 80px;
+    padding: 6px;
+    display: flex;
+    gap: 31px;
+  }
+  .items {
+    gap: 30px;
+  }
+  .modal-title {
+    margin-bottom: 20px;
+  }
+  .item-title{
+    font-size: 17px;
+    height: 23px;
+  }
+  .item-content_text {
+    margin: 0;
+    height: 25px;
+    font-size: 16px;
+  }
+  .minus-btn,
+  .plus-btn {
+    width: 30px;
+    height: 30px;
+  }
+  .item-quantity-result {
+    font-size: 25px;
+    margin-top: 10px;
+  }
+  .item-button {
+    justify-content: right;
+  }
+  .border-line {
+    border: 1px solid rgba(217, 255, 90, 1);
+  }
+  .basket-lime{
+    width: 20px;
+  }
+  .personal{
+    gap: 6px;
+    margin-right: 10px;
   }
 }
 </style>
