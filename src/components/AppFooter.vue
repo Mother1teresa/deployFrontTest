@@ -20,6 +20,9 @@ export default {};
 
 <style scoped>
 .container-fluid {
+  width: 100%;
+  margin-top: 170px;
+  height: 129px;
   padding: 0 56px 46px 67px;
   display: flex;
   justify-content: space-between;
@@ -46,26 +49,15 @@ export default {};
   font-size: 18px;
 }
 .btn-word{
-    margin-top: -7px;
+  margin-top: -7px;
 }
 .btn {
   width: 200px;
   height: 100px;
   background: rgba(235, 227, 255, 0.19);
   border: 2px solid rgba(217, 255, 90, 1);
-  -webkit-border-radius: 200px / 100px;
-  -moz-border-radius: 200px / 100px;
-  border-radius: 200px / 100px;
-  -moz-transform: scale(1) rotate(-15deg) translateX(0px) translateY(0px)
-    skewX(0deg) skewY(0deg);
-  -webkit-transform: scale(1) rotate(-15deg) translateX(0px) translateY(0px)
-    skewX(0deg) skewY(0deg);
-  -o-transform: scale(1) rotate(-15deg) translateX(0px) translateY(0px)
-    skewX(0deg) skewY(0deg);
-  -ms-transform: scale(1) rotate(-15deg) translateX(0px) translateY(0px)
-    skewX(0deg) skewY(0deg);
-  transform: scale(1) rotate(-15deg) translateX(0px) translateY(0px) skewX(0deg)
-    skewY(0deg);
+  border-radius: 50%;
+  transform: rotate(-15deg);
 }
 .btn-text {
   display: grid;
@@ -78,15 +70,52 @@ export default {};
   position: absolute;
   right: 35px;
   top: 5px;
-  -moz-transform: scale(1) rotate(-4deg) translateX(0px) translateY(0px)
-    skewX(0deg) skewY(0deg);
-  -webkit-transform: scale(1) rotate(-4deg) translateX(0px) translateY(0px)
-    skewX(0deg) skewY(0deg);
-  -o-transform: scale(1) rotate(-4deg) translateX(0px) translateY(0px)
-    skewX(0deg) skewY(0deg);
-  -ms-transform: scale(1) rotate(-4deg) translateX(0px) translateY(0px)
-    skewX(0deg) skewY(0deg);
-  transform: scale(1) rotate(-4deg) translateX(0px) translateY(0px) skewX(0deg)
-    skewY(0deg);
+  transform: rotate(-4deg);
 }
+.btn:active{
+  border: 2px solid white;
+}
+@media (max-width: 400px) {
+  .container-fluid {
+    width: 100%;
+    height: auto;
+    padding: 15px;
+    margin-top: 120px;
+    display: grid;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+  }
+
+  .footer-num, .footer-title {
+    display: block;
+    font-size: 14px;
+    text-align: left;
+  }
+  .footer-num {
+    margin-bottom: 5px; 
+  }
+  .btn {
+    right: 0;
+    position: absolute;
+    width: 160px;
+    height: 80px;
+    transform: rotate(-15deg);
+    align-self: flex-start; 
+  }
+  .btn-text {
+    font-size: 14px;
+  
+  }
+  .container-fluid {
+    flex-direction: row;
+  }
+  .footer-title {
+    order: 1;
+  }
+  .footer-num{
+    order: 2;
+  }
+}
+
 </style>

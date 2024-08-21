@@ -1,25 +1,28 @@
 <template>
-  <AppContent/>
+  <AppContent />
 
   <div class="container-fluid">
-    <ul class="nav nav-control">
+    <ul class="nav nav-control delet">
       <div class="nav-main">
         <li class="nav-item">
           <a class="logo-text" href="#">Elfen lied</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item delet-400">
           <a class="nav-link" href="#">
             <span>
               <img
                 src="/src/assets/image/catalog.png"
                 class="icon catalog"
-                alt="" />
-              </span>Каталог</a>
+                alt=""
+              />
+              Каталог</span
+            ></a
+          >
         </li>
       </div>
       <div class="nav-interesting">
         <li class="nav-item">
-          <a class="nav-link" href="#">Блог</a>
+          <a class="nav-link" href="#"> Блог</a>
         </li>
         <li class="nav-item">
           <ModelContacts />
@@ -32,21 +35,42 @@
               <span>
                 <img
                   src="/src/assets/image/search.png"
-                  class="icon search"
-                  alt=""/> 
-                  </span>Поиск
+                  class="icon search-image"
+                  alt=""
+                /> </span
+              >Поиск
             </a>
           </li>
         </div>
         <ModalPersonal />
       </div>
     </ul>
+
+    <div class="open">
+      <ul>
+        <li class="nav-item">
+          <a class=" logo-text" href="#">Elfen lied</a>
+        </li>
+        <div class="open-box">
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span>
+                <img class="open-icon" src="/src/assets/image/search.png" alt=""/>
+              </span>
+            </a>
+          </li>
+          <ModalPersonal />
+          <li class="nav-item">
+            <ModelContacts/>
+          </li>
+        </div>
+      </ul>
+    </div>
   </div>
 </template>
 
 <script>
-
-import ModelContacts from "./items/ModelContacts.vue"
+import ModelContacts from "./items/ModelContacts.vue";
 import ModalPersonal from "./items/ModalPersonal.vue";
 import AppContent from "@/components/AppContent.vue";
 export default {
@@ -55,13 +79,10 @@ export default {
     AppContent,
     ModelContacts,
   },
-  
 };
 </script>
 
 <style scoped>
-
-
 .container-fluid {
   position: absolute;
   top: 0;
@@ -117,7 +138,35 @@ export default {
     gap: 140px;
   }
 }
-
-
-
+@media (max-width: 400px) {
+  .container-fluid {
+    padding: 25px 15px 25px 15px;
+  }
+  .delet {
+    display: none;
+  }
+  .open ul {
+    display: flex;
+    justify-content: space-between;
+  }
+  .nav-item {
+    display: grid;
+    align-content: center;
+  }
+  li {
+    list-style-type: none;
+  }
+  ul {
+    margin-left: 0;
+    padding-left: 0;
+  }
+  .open-box {
+    display: flex;
+    gap: 18px;
+  }
+  /* .open-icon{
+    width: 21px;
+    height: 22px;
+  } */
+}
 </style>

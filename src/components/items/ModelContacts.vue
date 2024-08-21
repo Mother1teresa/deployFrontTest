@@ -1,5 +1,9 @@
 <template>
-  <a class="nav-link" href="#" @click="openModal">Контакты</a>
+  <a class="nav-link" href="#" @click="openModal">
+    <span>
+      <img class="open-icon" src="/src/assets/image/contacts.png" alt="" />
+    </span>
+    <span class="delet">Контакты</span></a>
 
   <transition name="slide">
     <div v-if="isModalOpen" class="modal-overlay" @click.self="closeModal">
@@ -53,7 +57,7 @@
                 />
                 <label class="text-field__label" for="message">Сообщение</label>
               </div>
-              <button type="button" class="btn">
+              <button type="submit" class="btn">
                 <span class="btn-text">Отправить</span>
               </button>
             </form>
@@ -93,7 +97,6 @@ export default {
   font-family: "Euclid Circular A", sans-serif;
   font-size: 18px;
 }
-
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -109,7 +112,6 @@ export default {
 .modal-content {
   width: 100%;
   height: 100%;
-  /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); */
   position: static;
   right: 0;
   transition: transform 0.7s ease;
@@ -136,7 +138,6 @@ export default {
   text-transform: uppercase;
   margin-bottom: 23px;
 }
-
 .slide-enter-active,
 .slide-leave-active {
   transition: transform 1s ease;
@@ -145,14 +146,11 @@ export default {
 .slide-leave-to {
   transform: translateX(100%);
 }
-
 .grid-container {
   display: grid;
-  grid-template-columns: 50% 50%; /* Две колонки с указанными размерами */
-  grid-template-rows: 1fr; /* Высота строк одинаковая */
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 1fr;
 }
-
-/* Стили для колонок */
 .column-1 {
   background-color: rgba(174, 151, 232, 1);
   border-radius: 30px 0 0 0;
@@ -170,19 +168,8 @@ export default {
   height: 96px;
   background: rgba(235, 227, 255, 0.19);
   border: 2px solid rgba(217, 255, 90, 1);
-  -webkit-border-radius: 188px / 96px;
-  -moz-border-radius: 188px / 96px;
-  border-radius: 188px / 96px;
-  -moz-transform: scale(1) rotate(-8deg) translateX(0px) translateY(0px)
-    skewX(0deg) skewY(0deg);
-  -webkit-transform: scale(1) rotate(-8deg) translateX(0px) translateY(0px)
-    skewX(0deg) skewY(0deg);
-  -o-transform: scale(1) rotate(-8deg) translateX(0px) translateY(0px)
-    skewX(0deg) skewY(0deg);
-  -ms-transform: scale(1) rotate(-8deg) translateX(0px) translateY(0px)
-    skewX(0deg) skewY(0deg);
-  transform: scale(1) rotate(-8deg) translateX(0px) translateY(0px) skewX(0deg)
-    skewY(0deg);
+  border-radius: 50%;
+  transform: rotate(-8deg);
 }
 .btn-text {
   font-size: 20px;
@@ -193,16 +180,7 @@ export default {
   position: absolute;
   right: 37px;
   top: 30px;
-  -moz-transform: scale(1) rotate(8deg) translateX(0px) translateY(0px)
-    skewX(0deg) skewY(0deg);
-  -webkit-transform: scale(1) rotate(8deg) translateX(0px) translateY(0px)
-    skewX(0deg) skewY(0deg);
-  -o-transform: scale(1) rotate(8deg) translateX(0px) translateY(0px)
-    skewX(0deg) skewY(0deg);
-  -ms-transform: scale(1) rotate(8deg) translateX(0px) translateY(0px)
-    skewX(0deg) skewY(0deg);
-  transform: scale(1) rotate(8deg) translateX(0px) translateY(0px) skewX(0deg)
-    skewY(0deg);
+  transform: rotate(8deg);
 }
 .from {
   box-sizing: border-box;
@@ -351,6 +329,12 @@ export default {
   position: absolute;
   bottom: -13px;
 }
+.btn:active {
+  border: 2px solid white;
+}
+.open-icon {
+  display: none;
+}
 @media (max-width: 400px) {
   .modal-overlay {
     max-width: 100%;
@@ -386,22 +370,28 @@ export default {
   .column-map {
     display: none;
   }
-  .column-city{
+  .column-city {
     font-size: 23px;
   }
-  .column-number{
+  .column-number {
     font-size: 30px;
     margin-top: 0;
   }
-  .column-text{
+  .column-text {
     font-size: 13px;
     margin-top: 0;
   }
-  .column-street{
+  .column-street {
     font-size: 13px;
   }
-  .column-image{
+  .column-image {
     margin-top: 60px;
+  }
+  .delet {
+    display: none;
+  }
+  .open-icon{
+    display: grid;
   }
 }
 </style>

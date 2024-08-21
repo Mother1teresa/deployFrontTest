@@ -183,7 +183,6 @@ export default {
   position: relative;
   z-index: 1;
 }
-
 .block {
   display: flex;
   flex-direction: column;
@@ -199,12 +198,9 @@ export default {
   z-index: 2;
   border-radius: 50px;
 }
-
 .block.expanded {
   width: 1160px; 
 }
-
-
 .block-header {
   padding: 10px;
   background-color: #007bff;
@@ -220,7 +216,6 @@ export default {
   border-radius: 20px;
   z-index: 1;
 }
-
 .block:not(.expanded) .block-content {
   opacity: 1;
 }
@@ -245,7 +240,6 @@ export default {
   bottom: -380px;
   right: 160px;
 }
-
 .block-content {
   position: absolute;
   color: rgba(255, 255, 255, 1);
@@ -315,9 +309,7 @@ export default {
   width: 356px;
   height: 135px;
   border: 2px solid rgba(217, 255, 90, 1);
-  -webkit-border-radius: 356px / 135px;
-  -moz-border-radius: 356px / 135px;
-  border-radius: 356px / 135px;
+  border-radius: 50%;
 }
 .btn-text {
   font-size: 20px;
@@ -326,6 +318,9 @@ export default {
   font-weight: 500;
   margin-left: 11px;
   text-align: center;
+}
+.btn:active{
+  border: 2px solid white;
 }
 .btn-union {
   text-align: center;
@@ -336,21 +331,9 @@ export default {
   right: 0;
   background: rgba(255, 255, 255, 0.19);
   border: 2px solid rgba(217, 255, 90, 1);
-  -webkit-border-radius: 356px / 135px;
-  -moz-border-radius: 356px / 135px;
-  border-radius: 356px / 135px;
-  -moz-transform: scale(1) rotate(-10deg) translateX(0px) translateY(0px)
-    skewX(0deg) skewY(0deg);
-  -webkit-transform: scale(1) rotate(-10deg) translateX(0px) translateY(0px)
-    skewX(0deg) skewY(0deg);
-  -o-transform: scale(1) rotate(-10deg) translateX(0px) translateY(0px)
-    skewX(0deg) skewY(0deg);
-  -ms-transform: scale(1) rotate(-10deg) translateX(0px) translateY(0px)
-    skewX(0deg) skewY(0deg);
-  transform: scale(1) rotate(-10deg) translateX(0px) translateY(0px) skewX(0deg)
-    skewY(0deg);
+  border-radius: 50%;
+  transform: rotate(-10deg);
 }
-
 @media (max-width: 1600px) {
   .closed-block {
     bottom: 103px;

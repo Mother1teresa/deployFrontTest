@@ -227,19 +227,8 @@ export default {
   height: 96px;
   background: rgba(235, 227, 255, 0.19);
   border: 2px solid rgba(217, 255, 90, 1);
-  -webkit-border-radius: 188px / 96px;
-  -moz-border-radius: 188px / 96px;
-  border-radius: 188px / 96px;
-  -moz-transform: scale(1) rotate(-7deg) translateX(0px) translateY(0px)
-    skewX(0deg) skewY(0deg);
-  -webkit-transform: scale(1) rotate(-7deg) translateX(0px) translateY(0px)
-    skewX(0deg) skewY(0deg);
-  -o-transform: scale(1) rotate(-7deg) translateX(0px) translateY(0px)
-    skewX(0deg) skewY(0deg);
-  -ms-transform: scale(1) rotate(-7deg) translateX(0px) translateY(0px)
-    skewX(0deg) skewY(0deg);
-  transform: scale(1) rotate(-7deg) translateX(0px) translateY(0px) skewX(0deg)
-    skewY(0deg);
+  border-radius: 50%;
+  transform: rotate(-7deg);
 }
 .btn-reg_text {
   font-size: 20px;
@@ -250,16 +239,7 @@ export default {
   position: absolute;
   right: 30px;
   top: 32px;
-  -moz-transform: scale(1) rotate(7deg) translateX(0px) translateY(0px)
-    skewX(0deg) skewY(0deg);
-  -webkit-transform: scale(1) rotate(7deg) translateX(0px) translateY(0px)
-    skewX(0deg) skewY(0deg);
-  -o-transform: scale(1) rotate(7deg) translateX(0px) translateY(0px)
-    skewX(0deg) skewY(0deg);
-  -ms-transform: scale(1) rotate(7deg) translateX(0px) translateY(0px)
-    skewX(0deg) skewY(0deg);
-  transform: scale(1) rotate(7deg) translateX(0px) translateY(0px) skewX(0deg)
-    skewY(0deg);
+  transform: rotate(7deg);
 }
 .btn {
   margin-top: 28px;
@@ -267,19 +247,8 @@ export default {
   height: 85px;
   background: rgba(235, 227, 255, 0.19);
   border: 2px solid rgba(217, 255, 90, 1);
-  -webkit-border-radius: 119px / 85px;
-  -moz-border-radius: 119px / 85px;
-  border-radius: 119px / 85px;
-  -moz-transform: scale(1) rotate(-8deg) translateX(0px) translateY(0px)
-    skewX(0deg) skewY(0deg);
-  -webkit-transform: scale(1) rotate(-8deg) translateX(0px) translateY(0px)
-    skewX(0deg) skewY(0deg);
-  -o-transform: scale(1) rotate(-8deg) translateX(0px) translateY(0px)
-    skewX(0deg) skewY(0deg);
-  -ms-transform: scale(1) rotate(-8deg) translateX(0px) translateY(0px)
-    skewX(0deg) skewY(0deg);
-  transform: scale(1) rotate(-8deg) translateX(0px) translateY(0px) skewX(0deg)
-    skewY(0deg);
+  border-radius: 50%;
+  transform: rotate(-8deg);
 }
 .btn-text {
   font-size: 20px;
@@ -290,16 +259,7 @@ export default {
   position: absolute;
   right: 30px;
   top: 25px;
-  -moz-transform: scale(1) rotate(8deg) translateX(0px) translateY(0px)
-    skewX(0deg) skewY(0deg);
-  -webkit-transform: scale(1) rotate(8deg) translateX(0px) translateY(0px)
-    skewX(0deg) skewY(0deg);
-  -o-transform: scale(1) rotate(8deg) translateX(0px) translateY(0px)
-    skewX(0deg) skewY(0deg);
-  -ms-transform: scale(1) rotate(8deg) translateX(0px) translateY(0px)
-    skewX(0deg) skewY(0deg);
-  transform: scale(1) rotate(8deg) translateX(0px) translateY(0px) skewX(0deg)
-    skewY(0deg);
+  transform: rotate(8deg);
 }
 .from {
   box-sizing: border-box;
@@ -427,7 +387,7 @@ export default {
   font-size: 40px;
   margin-top: -10px;
 }
-.model-block_account{
+.model-block_account {
   margin-right: 25px;
 }
 
@@ -489,9 +449,7 @@ export default {
     height: 91px;
     background: rgba(235, 227, 255, 0.19);
     border: 1px solid rgba(217, 255, 90, 1);
-    -webkit-border-radius: 154px / 91px;
-    -moz-border-radius: 154px / 91px;
-    border-radius: 154px / 91px;
+    border-radius: 50%;
   }
 }
 </style>

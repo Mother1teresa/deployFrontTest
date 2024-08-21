@@ -132,7 +132,7 @@ export default {
 .model-result {
   display: flex;
   justify-content: space-between;
-  margin-top: 23px;
+  margin-top: 55px;
 }
 .amount-text {
   font-size: 20px;
@@ -187,6 +187,8 @@ export default {
 }
 .currency {
   font-size: 20px;
+  position: absolute;
+  right: 330px;
 }
 .border-line {
   border: 2px solid rgba(217, 255, 90, 1);
@@ -217,19 +219,8 @@ export default {
   height: 100px;
   background: rgba(235, 227, 255, 0.19);
   border: 2px solid rgba(217, 255, 90, 1);
-  -webkit-border-radius: 100px / 50px;
-  -moz-border-radius: 100px / 50px;
-  border-radius: 100px / 50px;
-  -moz-transform: scale(1) rotate(-8deg) translateX(0px) translateY(0px)
-    skewX(0deg) skewY(0deg);
-  -webkit-transform: scale(1) rotate(-8deg) translateX(0px) translateY(0px)
-    skewX(0deg) skewY(0deg);
-  -o-transform: scale(1) rotate(-8deg) translateX(0px) translateY(0px)
-    skewX(0deg) skewY(0deg);
-  -ms-transform: scale(1) rotate(-8deg) translateX(0px) translateY(0px)
-    skewX(0deg) skewY(0deg);
-  transform: scale(1) rotate(-8deg) translateX(0px) translateY(0px) skewX(0deg)
-    skewY(0deg);
+  border-radius: 50%;
+  transform: rotate(-8deg);
 }
 .btn-text {
   font-size: 20px;
@@ -240,16 +231,7 @@ export default {
   position: absolute;
   right: 46px;
   top: 35px;
-  -moz-transform: scale(1) rotate(8deg) translateX(0px) translateY(0px)
-    skewX(0deg) skewY(0deg);
-  -webkit-transform: scale(1) rotate(8deg) translateX(0px) translateY(0px)
-    skewX(0deg) skewY(0deg);
-  -o-transform: scale(1) rotate(8deg) translateX(0px) translateY(0px)
-    skewX(0deg) skewY(0deg);
-  -ms-transform: scale(1) rotate(8deg) translateX(0px) translateY(0px)
-    skewX(0deg) skewY(0deg);
-  transform: scale(1) rotate(8deg) translateX(0px) translateY(0px) skewX(0deg)
-    skewY(0deg);
+  transform: rotate(8deg);
 }
 .item-content {
   display: flex;
@@ -329,7 +311,7 @@ export default {
 .currency-line {
   font-size: 20px;
   position: absolute;
-  left: 190px;
+  left: 180px;
 }
 .item-title_lamp {
   display: flex;
@@ -341,6 +323,9 @@ export default {
   height: 17px;
   border: 3px solid rgba(255, 255, 255, 1);
   border-radius: 50%;
+}
+.btn:active{
+  border: 2px solid white;
 }
 @media (max-width: 1600px) {
   .modal-content {

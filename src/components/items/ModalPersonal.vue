@@ -10,7 +10,6 @@
       <ModelBaslet />
     </li>
   </div>
- 
 </template>
 
 <script>
@@ -21,9 +20,9 @@ export default {
   components: {
     ModalFavorite,
     ModelProfile,
-    ModelBaslet
+    ModelBaslet,
   },
-}
+};
 </script>
 
 <style scoped>
@@ -40,5 +39,10 @@ export default {
   gap: 36px;
   margin-right: 15px;
 }
-
+@media (max-width: 400px) {
+  .personal {
+    gap: 18px;
+    margin-right: 0;
+  }
+}
 </style>
