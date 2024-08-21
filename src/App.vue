@@ -3,24 +3,30 @@
     <AppHeader />
   </header>
   <main>
-    <AppContent/>
+    <AppCatalog />
   </main>
+  <footer>
+    <AppFooter/>
+  </footer>
 </template>
 
 <script>
+import AppFooter from "./components/AppFooter.vue";
+import AppCatalog from "./components/AppCatalog.vue";
+import AppHeader from "./components/AppHeader.vue";
 
-import AppHeader from './components/AppHeader.vue';
-import AppContent from '@/components/AppContent.vue';
 export default {
-  components:{
+  components: {
     AppHeader,
-    AppContent
-  }
-}
+    AppFooter,
+    AppCatalog,
+  },
+};
 </script>
 
 <style>
-body{
+body {
   background: rgba(174, 151, 232, 1);
 }
+
 </style>

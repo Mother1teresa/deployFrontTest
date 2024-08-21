@@ -1,12 +1,12 @@
 <template>
-  <div class="container-fluid">
+
+ <div class="content-mian .container-fluidd">
     <div
       v-for="(block, index) in blocks"
       :key="block.id"
       :class="['block', { expanded: isActive === index }]"
       @click="toggleBlock(index)"
-      :style="getBlockStyle(index)"
-    >
+      :style="getBlockStyle(index)">
       <div
         class="block-image"
         :style="{
@@ -15,9 +15,7 @@
           })`,
           width: isActive === index ? '494px' : block.widthClosed,
           height: isActive === index ? '724px' : block.heightClosed,
-        }"
-      ></div>
-      <!-- Надпись для закрытого блока под изображением -->
+        }"></div>
       <div v-if="isActive !== index && isActive !== null" class="closed-block">
         <div class="block-label">
           {{ block.closedTitle }}
@@ -26,18 +24,15 @@
           {{ block.num }}
         </div>
       </div>
-      <!-- Надпись и контент для открытого блока -->
       <div v-if="isActive === index" class="block-content">
         <div class="text-fon" :style="{ color: block.textFonColor }">
           {{ block.textFon }}
         </div>
 
         <button class="btn">
-          <div class="btn-union">
-            
-          </div>
+          <div class="btn-union"></div>
           <img src="/src/assets/image/Union.png" alt="" class="union" />
-            <span class="btn-text">Купить</span>
+          <span class="btn-text">Купить</span>
         </button>
 
         <div class="block-label-open">
@@ -74,7 +69,7 @@ import armchairmini from "/src/assets/image/armchairmini.png";
 export default {
   data() {
     return {
-      isActive: 0, // Индекс активного блока
+      isActive: 0,
       blocks: [
         {
           id: 1,
@@ -87,8 +82,8 @@ export default {
           closedColor: "rgba(197, 176, 250, 0.7)",
           openColor: "transparent",
           num: "01",
-          closedTitle: "Cлайд", // Надпись для закрытого блока
-          openLabel: "Светильник", // Надпись для открытого блока
+          closedTitle: "Cлайд", 
+          openLabel: "Светильник", 
           price: "150 000",
           textFon: "Benjamin Moore",
           textFonColor: "rgba(203, 182, 255, 0.6)",
@@ -104,8 +99,8 @@ export default {
           closedColor: "rgba(250, 143, 239, 1)",
           openColor: "rgba(250, 143, 239, 1)",
           num: "02",
-          closedTitle: "Cлайд", // Надпись для закрытого блока
-          openLabel: "кресло", // Надпись для открытого блока
+          closedTitle: "Cлайд", 
+          openLabel: "кресло", 
           price: "120 000",
           textFon: "Paint Here Glory",
           textFonColor: "rgba(255, 168, 246, 1)",
@@ -121,8 +116,8 @@ export default {
           content:
             "Функциональная дизайнерская лампа для создания максимально комфортного освещения",
           num: "03",
-          closedTitle: "Cлайд", // Надпись для закрытого блока
-          openLabel: "высокий стол", // Надпись для открытого блока
+          closedTitle: "Cлайд", 
+          openLabel: "высокий стол", 
           price: "235 000",
           textFon: "Benjamin Moore",
           textFonColor: "rgba(190, 216, 255, 1)",
@@ -170,35 +165,46 @@ export default {
 </script>
 
 <style scoped>
-.container-fluid {
-  position: absolute;
+
+.content-mian {
   display: flex;
+  padding: 20px 20px;
+  height: 1100px; 
   width: 100%;
-  height: 1080px;
+  justify-content: space-between; 
+}
+
+.container-fluidd {
+  display: flex;
   gap: 20px;
-  padding: 0 20px 0 20px;
-  top: 30px;
-  z-index: -1;
+
+  width: 100%;
+  height: 100%; 
+  position: relative;
+  z-index: 1;
 }
 
 .block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   width: 340px;
-  height: 1060px;
+  height: 100%; 
   background-color: rgba(197, 176, 250, 0.7);
   margin-bottom: 10px;
-  transition: height 0.3s ease, opacity 0.3s ease;
+  transition: width 0.3s ease, height 0.3s ease, opacity 0.3s ease;
   cursor: pointer;
   overflow: hidden;
   z-index: 2;
   border-radius: 50px;
-  display: grid;
-  align-content: center;
-  justify-content: center;
-  position: relative;
 }
+
 .block.expanded {
-  width: 1160px;
+  width: 1160px; 
 }
+
+
 .block-header {
   padding: 10px;
   background-color: #007bff;
@@ -208,11 +214,13 @@ export default {
 .block-image {
   background-size: cover;
   background-position: center;
-  width: 494px;
-  height: 724px;
+  width: 100%;
+  max-width: 494px;
+  height: auto;
   border-radius: 20px;
   z-index: 1;
 }
+
 .block:not(.expanded) .block-content {
   opacity: 1;
 }
@@ -234,9 +242,10 @@ export default {
 }
 .closed-block {
   position: absolute;
-  bottom: 103px;
-  right: 145px;
+  bottom: -380px;
+  right: 160px;
 }
+
 .block-content {
   position: absolute;
   color: rgba(255, 255, 255, 1);
@@ -251,6 +260,7 @@ export default {
   text-align: center;
   text-transform: uppercase;
   z-index: -1;
+  opacity: 0.6;
 }
 .border-white {
   border: 1px solid rgba(255, 255, 255, 0.067);
@@ -258,7 +268,7 @@ export default {
 }
 .block-label-open {
   font-size: 28px;
-  width: 194px;
+  width: 270px;
   font-family: "Euclid Circular A", sans-serif;
   font-weight: 500;
   text-transform: uppercase;
@@ -304,12 +314,10 @@ export default {
   right: 0;
   width: 356px;
   height: 135px;
-  
   border: 2px solid rgba(217, 255, 90, 1);
   -webkit-border-radius: 356px / 135px;
   -moz-border-radius: 356px / 135px;
   border-radius: 356px / 135px;
- 
 }
 .btn-text {
   font-size: 20px;
@@ -318,7 +326,6 @@ export default {
   font-weight: 500;
   margin-left: 11px;
   text-align: center;
-  
 }
 .btn-union {
   text-align: center;
@@ -354,4 +361,4 @@ export default {
     height: 534px;
   }
 }
-</style>
+</style> 

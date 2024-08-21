@@ -1,5 +1,6 @@
 <template>
-  <!-- <AppContent/> -->
+  <AppContent/>
+
   <div class="container-fluid">
     <ul class="nav nav-control">
       <div class="nav-main">
@@ -7,14 +8,13 @@
           <a class="logo-text" href="#">Elfen lied</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#"
-            ><span
-              ><img
+          <a class="nav-link" href="#">
+            <span>
+              <img
                 src="/src/assets/image/catalog.png"
                 class="icon catalog"
-                alt="" /></span
-            >Каталог</a
-          >
+                alt="" />
+              </span>Каталог</a>
         </li>
       </div>
       <div class="nav-interesting">
@@ -22,7 +22,7 @@
           <a class="nav-link" href="#">Блог</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Контакты</a>
+          <ModelContacts />
         </li>
       </div>
       <div class="nav-links-right">
@@ -38,28 +38,35 @@
             </a>
           </li>
         </div>
-        <ModalBasket />
+        <ModalPersonal />
       </div>
     </ul>
   </div>
 </template>
 
 <script>
-import ModalBasket from "./items/ModalBasket.vue";
+
+import ModelContacts from "./items/ModelContacts.vue"
+import ModalPersonal from "./items/ModalPersonal.vue";
 import AppContent from "@/components/AppContent.vue";
 export default {
   components: {
-    ModalBasket,
+    ModalPersonal,
     AppContent,
+    ModelContacts,
   },
+  
 };
 </script>
 
 <style scoped>
+
+
 .container-fluid {
-  position: relative;
+  position: absolute;
+  top: 0;
   padding: 0 60px 0 60px;
-  z-index: 1;
+  z-index: 2;
 }
 .nav-control {
   justify-content: space-between;
@@ -110,4 +117,7 @@ export default {
     gap: 140px;
   }
 }
+
+
+
 </style>

@@ -1,21 +1,9 @@
 <template>
-  <div class="personal">
-    <li class="nav-item">
-      <a class="nav-link" href="#">
-        <span class="link"><img  src="/src/assets/image/favourites.png" alt="" /></span>
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">
-        <span class="link"><img src="/src/assets/image/profile.png" alt="" /></span>
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#" @click="openModal">
-        <span class="link"><img  src="/src/assets/image/basket.png" alt="" /></span>
-      </a>
-    </li>
-  </div>
+  <a class="nav-link" href="#" @click="openModal">
+    <span class="link">
+      <img src="/src/assets/image/basket.png" alt="" />
+    </span>
+  </a>
   <transition name="slide">
     <div v-if="isModalOpen" class="modal-overlay" @click.self="closeModal">
       <div class="modal-content" @click.stop>
@@ -25,19 +13,26 @@
         </div>
         <div class="items">
           <div class="item" v-for="product in products" :key="product.id">
-            <img :src="product.imageUrl" alt="Image" />
+            <img :src="product.imageUrl" alt="Image" class="imageUrl" />
             <div class="item-info">
               <div class="item-content">
                 <div class="item-titles">
                   <div class="item-title_lamp">
-                    <div class="color"></div>
+                    <div
+                      class="color"
+                      :style="{ 'background-color': product.color }"
+                    ></div>
                     <div class="item-title">{{ product.title }}</div>
                   </div>
                   <div class="item-content_text">{{ product.text }}</div>
                 </div>
-                <a class="" href="#">
+                <a href="#" @click.prevent="removeProduct(product.id)">
                   <span>
-                    <img class="basket-lime" src="/src/assets/image/basket-lime.png" alt="Basket" />
+                    <img
+                      class="trash-lime"
+                      src="/src/assets/image/tarsh-lime.png"
+                      alt="trash"
+                    />
                   </span>
                 </a>
               </div>
@@ -48,22 +43,23 @@
                 </div>
                 <div class="item-button">
                   <div class="minus-btn">-</div>
-                  <span class="figure">1</span>
+                  <span class="figure">{{ product.quantity }}</span>
                   <div class="plus-btn">+</div>
                 </div>
               </div>
             </div>
           </div>
-
-          <div class="model-result">
-            <div class="amount">
-              <div class="amount-text">Итого:</div>
-              <div class="amount-result">
-                450 000 <span class="currency">₽</span>
-              </div>
+        </div>
+        <div class="model-result">
+          <div class="amount">
+            <div class="amount-text">Итого:</div>
+            <div class="amount-result">
+              {{ totalAmount }} <span class="currency-line">₽</span>
             </div>
-            <button class="btn"><span class="btn-text">Оформить</span></button>
           </div>
+          <button class="btn">
+            <span class="btn-text">Оформить</span>
+          </button>
         </div>
       </div>
     </div>
@@ -82,25 +78,28 @@ export default {
         {
           id: 1,
           imageUrl: image1,
-          color: "",
+          color: "rgba(41, 208, 217, 1)",
           title: "coppelia",
           text: "Лампа настольная",
+          quantity: 1,
           result: "150 000",
         },
         {
           id: 2,
           imageUrl: image2,
-          color: "",
+          color: "rgba(255, 196, 165, 1)",
           title: "Facchetta",
           text: "Лампа настольная",
+          quantity: 1,
           result: "150 000",
         },
         {
           id: 3,
           imageUrl: image3,
-          color: "",
+          color: "rgba(250, 142, 239, 1)",
           title: "coppelia",
           text: "Лампа настольная",
+          quantity: 1,
           result: "150 000",
         },
       ],
@@ -113,25 +112,23 @@ export default {
     closeModal() {
       this.isModalOpen = false;
     },
+    removeProduct(productId) {
+      this.products = this.products.filter(
+        (product) => product.id !== productId
+      );
+    },
+  },
+  computed: {
+    totalAmount() {
+      return this.products.reduce((total, product) => {
+        return total + parseInt(product.result.replace(/\D/g, ""));
+      }, 0);
+    },
   },
 };
 </script>
 
 <style scoped>
-
-.nav-item{
-  display: grid;
-  align-content: center;
-}
-.nav-interesting,
-.personal {
-  align-content: center;
-  display: flex;
-}
-.personal {
-  gap: 36px;
-  margin-right: 30px;
-}
 .model-result {
   display: flex;
   justify-content: space-between;
@@ -273,29 +270,25 @@ export default {
 .modal-overlay {
   position: fixed;
   top: 0;
-  right: 21px;
+  right: 61px;
   width: 100%;
   height: 100%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
 }
 .modal-content {
   width: 619px;
   height: 906px;
-  background-color: rgba(51, 32, 101, 0.18);
+  background-color: rgba(52, 32, 101, 0.174);
+  backdrop-filter: blur(80px);
   padding: 48px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   position: absolute;
-  top: 115px;
+  top: 130px;
   right: 0;
   transition: transform 0.7s ease;
   border-radius: 30px;
 }
-/* .unification{
-  display: flex;
-  justify-content: space-between;
-  position: relative;
-} */
 .close-button {
   position: absolute;
   width: 65px;
@@ -309,7 +302,6 @@ export default {
   cursor: pointer;
   transition: opacity 0.3s ease;
 }
-
 .item {
   width: 523px;
   height: 145px;
@@ -318,8 +310,10 @@ export default {
   gap: 41px;
 }
 .items {
-  display: grid;
+  height: 555px;
   gap: 60px;
+  display: grid;
+  align-content: start;
 }
 .slide-enter-active,
 .slide-leave-active {
@@ -329,7 +323,25 @@ export default {
 .slide-leave-to {
   transform: translateX(100%);
 }
-
+.imageUrl {
+  width: 82px;
+}
+.currency-line {
+  font-size: 20px;
+  position: absolute;
+  left: 190px;
+}
+.item-title_lamp {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.color {
+  width: 17px;
+  height: 17px;
+  border: 3px solid rgba(255, 255, 255, 1);
+  border-radius: 50%;
+}
 @media (max-width: 1600px) {
   .modal-content {
     width: 450px;
@@ -370,7 +382,11 @@ export default {
   .modal-title {
     margin-bottom: 20px;
   }
-  .item-title{
+  .item-content {
+    width: 310px;
+    height: 53px;
+  }
+  .item-title {
     font-size: 17px;
     height: 23px;
   }
@@ -384,22 +400,148 @@ export default {
     width: 30px;
     height: 30px;
   }
+  .item-quantity {
+    width: 310px;
+  }
   .item-quantity-result {
     font-size: 25px;
     margin-top: 10px;
   }
   .item-button {
     justify-content: right;
+    height: 30px;
   }
   .border-line {
     border: 1px solid rgba(217, 255, 90, 1);
   }
-  .basket-lime{
+  .trash-lime {
     width: 20px;
   }
-  .personal{
+  .personal {
     gap: 6px;
     margin-right: 10px;
+  }
+  .border-line {
+    width: 310px;
+  }
+  .currency {
+    left: 207px;
+    font-size: 13px;
+  }
+  .currency-line {
+    left: 150px;
+  }
+}
+@media (max-width: 400px) {
+  .modal-overlay {
+    width: 100%;
+    height: 100%;
+    padding: 20px 15px;
+  }
+  .modal-content {
+    top: 20px;
+    left: 80px;
+    width: 360px;
+    height: 708px;
+    top: 20px;
+    padding: 22px 15px 15px 18px;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+  .item {
+    height: 120px;
+    width: 330px;
+  }
+  .imageUrl {
+    width: 67px;
+  }
+  .modal-title {
+    font-size: 15px;
+    margin-bottom: 50px;
+  }
+  .item-title {
+    font-size: 15px;
+  }
+  .border-line {
+    width: 220px;
+  }
+  .modal-title {
+    margin-bottom: 42px;
+  }
+  .item-content_text {
+    font-size: 13px;
+  }
+  .trash-lime {
+    width: 30px;
+    height: 33px;
+  }
+  .item-content {
+    width: 224px;
+    height: 53px;
+    margin-bottom: 0;
+  }
+  .item-quantity-result {
+    font-size: 25px;
+    margin-top: 26px;
+    letter-spacing: 1px;
+  }
+  .currency {
+    font-size: 13px;
+    left: 195px;
+  }
+  .circle-heart {
+    width: 50px;
+    height: 50px;
+  }
+  .heart-image {
+    width: 22px;
+    height: 20px;
+  }
+  .item-quantity {
+    width: 220px;
+  }
+  .minus-btn {
+    width: 45px;
+    height: 45px;
+    border: 1px solid rgba(255, 255, 255, 1);
+  }
+  .plus-btn {
+    width: 45px;
+    height: 45px;
+    border: 1px solid rgba(255, 255, 255, 1);
+  }
+  .amount-text {
+    text-transform: capitalize;
+    font-size: 13px;
+  }
+  .amount-result {
+    font-size: 30px;
+    margin-top: 4px;
+    letter-spacing: 1px;
+  }
+  .currency-line {
+    font-size: 20px;
+    left: 110px;
+  }
+  .btn {
+    width: 155px;
+    height: 91px;
+    border: 1px solid rgba(217, 255, 90, 1);
+    -webkit-border-radius: 155px / 91px;
+    -moz-border-radius: 155px / 91px;
+    border-radius: 155px / 91px;
+  }
+  .btn-text {
+    font-size: 16px;
+    right: 34px;
+    top: 30px;
+  }
+  .item-quantity {
+    width: 224px;
+  }
+  .item-button {
+    justify-content: right;
+    height: 45px;
   }
 }
 </style>
