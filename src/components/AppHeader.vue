@@ -10,8 +10,15 @@
         <li class="nav-item delet-400">
           <a class="nav-link" href="#catalog">
             <span>
-              <img src="/src/assets/image/catalog.png" class="icon catalog" alt=""/>
-              Каталог</span></a></li>
+              <img
+                src="/src/assets/image/catalog.png"
+                class="icon catalog"
+                alt=""
+              />
+              Каталог</span
+            ></a
+          >
+        </li>
       </div>
       <div class="nav-interesting">
         <li class="nav-item">
@@ -24,9 +31,14 @@
       <div class="nav-links-right">
         <div class="search">
           <li class="nav-item">
-            <a class="nav-link" href="#" @click="toggleSearch" >
+            <a class="nav-link" href="#" @click="toggleSearch">
               <span>
-                <img src="/src/assets/image/search.png" class="icon search-image" alt=""/>Поиск</span>
+                <img
+                  src="/src/assets/image/search.png"
+                  class="icon search-image"
+                  alt=""
+                />Поиск</span
+              >
             </a>
           </li>
         </div>
@@ -34,10 +46,8 @@
       </div>
     </ul>
 
-    
-
     <div class="open">
-      <ul>
+      <ul class="open-ul">
         <li class="nav-item">
           <a class="logo-text" href="#">Elfen lied</a>
         </li>
@@ -61,11 +71,21 @@
       </ul>
     </div>
 
-    <div v-if="showSearchBar" class="search-bar" >
+    <div v-if="showSearchBar" class="search-bar">
       <div class="search-box">
-        <img src="/src/assets/image/search-lime.png" alt="Search Icon" class="search-icon"/>
+        <img
+          src="/src/assets/image/search-lime.png"
+          alt="Search Icon"
+          class="search-icon"
+        />
       </div>
-      <input type="text"  v-show="searchActive" v-model="searchQuery" placeholder="Поиск..." class="search-input"/>
+      <input
+        type="text"
+        v-show="searchActive"
+        v-model="searchQuery"
+        placeholder="Поиск..."
+        class="search-input"
+      />
       <button class="close-button" @click="closeModal">
         <img src="/src/assets/image/close.png" alt="" />
       </button>
@@ -102,7 +122,10 @@ export default {
 </script>
 
 <style scoped>
-.open{
+.open {
+  display: none;
+}
+.open-ul {
   display: none;
 }
 .search-bar {
@@ -144,7 +167,7 @@ export default {
   padding: 5px;
   font-size: 16px;
 }
-.search-box{
+.search-box {
   display: grid;
   align-content: center;
   justify-content: center;
@@ -238,6 +261,9 @@ export default {
   .open {
     display: grid;
   }
+  .open-ul {
+    display: grid;
+  }
   .open ul {
     display: flex;
     justify-content: space-between;
@@ -257,10 +283,10 @@ export default {
     display: flex;
     gap: 18px;
   }
- .search-bar{
-  height: 58px;
-  margin-top: 3px;
-  width: 360px;
- }
+  .search-bar {
+    height: 58px;
+    margin-top: 3px;
+    width: 360px;
+  }
 }
 </style>
