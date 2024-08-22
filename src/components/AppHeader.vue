@@ -63,19 +63,9 @@
 
     <div v-if="showSearchBar" class="search-bar" >
       <div class="search-box">
-        <img
-          src="/src/assets/image/search-lime.png"
-          alt="Search Icon"
-          class="search-icon"
-        />
+        <img src="/src/assets/image/search-lime.png" alt="Search Icon" class="search-icon"/>
       </div>
-      <input
-        type="text"
-        v-show="searchActive"
-        v-model="searchQuery"
-        placeholder="Поиск..."
-        class="search-input"
-      />
+      <input type="text"  v-show="searchActive" v-model="searchQuery" placeholder="Поиск..." class="search-input"/>
       <button class="close-button" @click="closeModal">
         <img src="/src/assets/image/close.png" alt="" />
       </button>
@@ -112,6 +102,9 @@ export default {
 </script>
 
 <style scoped>
+.open{
+  display: none;
+}
 .search-bar {
   margin-top: 48px;
   width: 100%;
@@ -216,9 +209,7 @@ export default {
   width: 15px;
   height: 15px;
 }
-.open {
-  display: none;
-}
+
 .close-button {
   position: absolute;
   width: 65px;
