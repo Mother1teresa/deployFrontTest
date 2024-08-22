@@ -315,6 +315,7 @@ export default {
   margin-bottom: 170px;
   justify-content: space-between;
 }
+
 .item {
   width: 428px;
   height: 517px;
