@@ -311,9 +311,9 @@ export default {
   width: 100%;
   margin-top: 70px;
   display: flex;
-  gap: 20px;
   height: 517px;
   margin-bottom: 170px;
+  justify-content: space-between;
 }
 .item {
   width: 428px;
