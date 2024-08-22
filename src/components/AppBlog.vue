@@ -76,7 +76,7 @@ export default {
   padding: 0 60px 0 60px;
   margin-top: 170px;
   margin-bottom: 170px;
-  height:  530px;
+  height:  540px;
 }
 .blog-main {
   display: flex;
@@ -194,6 +194,11 @@ export default {
   font-weight: 400;
   text-align: center;
   height: 20px;
+}
+@media (max-width: 1600px) {
+  .container-fluid {
+  overflow: hidden;
+  }
 }
 @media (max-width: 400px) {
   .container-fluid {

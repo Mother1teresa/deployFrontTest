@@ -576,6 +576,11 @@ export default {
   justify-content: space-between;
   margin-top: 18px;
 }
+@media (max-width: 1600px) {
+  .container-fluid {
+  overflow: hidden;
+  }
+}
 @media (max-width: 400px) {
   .container-fluid {
     padding: 0 14px 0 14px;
