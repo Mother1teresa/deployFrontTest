@@ -3,7 +3,7 @@
     <div class="footer-num">@2023</div>
     <button class="btn">
       <span class="btn-text">
-        <img src="/src/assets/image/group.png" alt="" />
+        <img class="group" src="/src/assets/image/group.png" alt="" />
         <div class="btn-word">
           <span class="request-text">Request </span>
           <span class="design-text">Design</span>
@@ -48,7 +48,7 @@ export default {};
   font-weight: 700;
   font-size: 18px;
 }
-.btn-word{
+.btn-word {
   margin-top: -7px;
 }
 .btn {
@@ -72,7 +72,7 @@ export default {};
   top: 5px;
   transform: rotate(-4deg);
 }
-.btn:active{
+.btn:active {
   border: 2px solid white;
 }
 @media (max-width: 400px) {
@@ -87,35 +87,49 @@ export default {};
     position: relative;
   }
 
-  .footer-num, .footer-title {
+  .footer-num,
+  .footer-title {
     display: block;
     font-size: 14px;
     text-align: left;
   }
   .footer-num {
-    margin-bottom: 5px; 
+    margin-bottom: 5px;
   }
   .btn {
-    right: 0;
+    right: 15px;
+    bottom: 25px;
     position: absolute;
-    width: 160px;
-    height: 80px;
+    width: 146px;
+    height: 86px;
     transform: rotate(-15deg);
-    align-self: flex-start; 
+    align-self: flex-start;
   }
-  .btn-text {
-    font-size: 14px;
-  
+  .btn-text{
+    margin-top: 5px;
+    margin-right: -8px;
+  }
+  .request-text,
+  .design-text {
+    font-size: 13px;
+  }
+  .btn-word {
+    margin-top: -8px;
   }
   .container-fluid {
     flex-direction: row;
   }
   .footer-title {
     order: 1;
+    width: 98px;
+    margin-bottom: 18px;
   }
-  .footer-num{
+  .footer-num {
     order: 2;
   }
+  .group {
+    width: 30px;
+    height: 30px;
+  }
 }
-
 </style>

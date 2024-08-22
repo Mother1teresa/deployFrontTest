@@ -1,10 +1,12 @@
 <template>
-
- <div class="content-mian .container-fluidd">
+  <div class="content-mian .container-fluidd">
     <div
       v-for="(block, index) in blocks"
       :key="block.id"
-      :class="['block', { expanded: isActive === index }]"
+      :class="[
+        'block',
+        { expanded: isActive === index, hidden: shouldHideBlock(index) },
+      ]"
       @click="toggleBlock(index)"
       :style="getBlockStyle(index)">
       <div
@@ -14,8 +16,8 @@
             isActive === index ? block.imageOpen : block.imageClosed
           })`,
           width: isActive === index ? '494px' : block.widthClosed,
-          height: isActive === index ? '724px' : block.heightClosed,
-        }"></div>
+          height: isActive === index ? '724px' : block.heightClosed,}"></div>
+
       <div v-if="isActive !== index && isActive !== null" class="closed-block">
         <div class="block-label">
           {{ block.closedTitle }}
@@ -34,14 +36,24 @@
           <img src="/src/assets/image/Union.png" alt="" class="union" />
           <span class="btn-text">Купить</span>
         </button>
-
-        <div class="block-label-open">
-          {{ block.openLabel }}
-        </div>
-        <div class="block-text">{{ block.content }}</div>
-        <div class="border-white"></div>
-        <div class="block-price">
-          {{ block.price }} <span class="currency">₽</span>
+        <div class="block-position">
+          <div class="block-box">
+            <div class="block-label-open">
+              {{ block.openLabel }}
+            </div>
+            <div class="block-text">{{ block.content }}</div>
+            <div class="border-white"></div>
+            <div class="block-price">
+              {{ block.price }} <span class="currency">₽</span>
+            </div>
+          </div>
+          <div class="slider-box">
+            <div class="slider-white">
+              <div class="slider-num">01</div>
+              <div class="slider-line">｜</div>
+              <div class="slider-num">03</div>
+            </div>
+          </div>
         </div>
       </div>
       <div v-if="isActive === null" class="centered-text">
@@ -82,8 +94,8 @@ export default {
           closedColor: "rgba(197, 176, 250, 0.7)",
           openColor: "transparent",
           num: "01",
-          closedTitle: "Cлайд", 
-          openLabel: "Светильник", 
+          closedTitle: "Cлайд",
+          openLabel: "Santa Trinita",
           price: "150 000",
           textFon: "Benjamin Moore",
           textFonColor: "rgba(203, 182, 255, 0.6)",
@@ -99,8 +111,8 @@ export default {
           closedColor: "rgba(250, 143, 239, 1)",
           openColor: "rgba(250, 143, 239, 1)",
           num: "02",
-          closedTitle: "Cлайд", 
-          openLabel: "кресло", 
+          closedTitle: "Cлайд",
+          openLabel: "Santa Trinita",
           price: "120 000",
           textFon: "Paint Here Glory",
           textFonColor: "rgba(255, 168, 246, 1)",
@@ -116,13 +128,14 @@ export default {
           content:
             "Функциональная дизайнерская лампа для создания максимально комфортного освещения",
           num: "03",
-          closedTitle: "Cлайд", 
-          openLabel: "высокий стол", 
+          closedTitle: "Cлайд",
+          openLabel: "Santa Trinita",
           price: "235 000",
           textFon: "Benjamin Moore",
           textFonColor: "rgba(190, 216, 255, 1)",
         },
       ],
+      windowWidth: window.innerWidth,
     };
   },
   methods: {
@@ -130,6 +143,9 @@ export default {
       this.isActive = this.isActive === index ? null : index;
     },
     getBlockStyle(index) {
+      if (this.windowWidth <= 400 && index !== 0) {
+        return { display: "none" };
+      }
       if (this.isActive === null) {
         return {
           width: "614px",
@@ -160,26 +176,36 @@ export default {
         };
       }
     },
+    shouldHideBlock(index) {
+      return this.windowWidth <= 400 && index !== 0;
+    },
+    handleResize() {
+      this.windowWidth = window.innerWidth;
+    },
+  },
+  created() {
+    window.addEventListener("resize", this.handleResize);
+  },
+  destroyed() {
+    window.removeEventListener("resize", this.handleResize);
   },
 };
 </script>
 
 <style scoped>
-
 .content-mian {
   display: flex;
   padding: 20px 20px;
-  height: 1100px; 
+  height: 1100px;
   width: 100%;
-  justify-content: space-between; 
+  justify-content: space-between;
 }
-
 .container-fluidd {
   display: flex;
   gap: 20px;
 
   width: 100%;
-  height: 100%; 
+  height: 100%;
   position: relative;
   z-index: 1;
 }
@@ -189,7 +215,7 @@ export default {
   align-items: center;
   justify-content: center;
   width: 340px;
-  height: 100%; 
+  height: 100%;
   background-color: rgba(197, 176, 250, 0.7);
   margin-bottom: 10px;
   transition: width 0.3s ease, height 0.3s ease, opacity 0.3s ease;
@@ -197,9 +223,10 @@ export default {
   overflow: hidden;
   z-index: 2;
   border-radius: 50px;
+  position: relative;
 }
 .block.expanded {
-  width: 1160px; 
+  width: 1160px;
 }
 .block-header {
   padding: 10px;
@@ -237,8 +264,7 @@ export default {
 }
 .closed-block {
   position: absolute;
-  bottom: -380px;
-  right: 160px;
+  bottom: 50px;
 }
 .block-content {
   position: absolute;
@@ -319,7 +345,7 @@ export default {
   margin-left: 11px;
   text-align: center;
 }
-.btn:active{
+.btn:active {
   border: 2px solid white;
 }
 .btn-union {
@@ -334,14 +360,116 @@ export default {
   border-radius: 50%;
   transform: rotate(-10deg);
 }
-@media (max-width: 1600px) {
+.slider-white {
+  display: none;
+}
+@media (max-width: 400px) {
+  .content-mian {
+    padding: 0 8px 0 15px;
+    height: 655px !important;
+  }
+  .block {
+    width: 366px !important;
+    height: 655px !important;
+    border-radius: 0;
+  }
   .closed-block {
     bottom: 103px;
     right: 105px;
   }
-  .block-imag {
-    width: 234px;
-    height: 534px;
+  .block-image {
+    width: 236px !important;
+    height: 346px !important;
+    margin-top: -100px;
+
+  }
+  .text-fon {
+    font-size: 71px;
+    width: 361px;
+    text-align: left;
+    margin-bottom: 123px;
+   
+  }
+  .block-content {
+    padding-left: 0;
+    bottom: 0;
+  }
+  .block-label-open {
+    font-size: 23px;
+    width: 222px;
+    margin-bottom: 12px;
+  }
+  .block-text {
+    font-size: 13px;
+    line-height: 20px;
+    width: 222px;
+  }
+  .border-white {
+    display: none;
+  }
+  .block-position {
+    display: flex;
+    justify-content: space-between;
+  }
+  .slider-white {
+    width: 52px;
+    height: 143px;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 50px;
+    display: grid;
+    gap: 10px;
+    justify-content: center;
+    align-content: center;
+  }
+  .slider-num {
+    color: rgba(174, 151, 232, 1);
+    font-family: "Floreste Wavy", sans-serif;
+    font-size: 25px;
+  }
+  .slider-line {
+    color: rgba(174, 151, 232, 1);
+  }
+  .block-price {
+    color: rgba(217, 255, 90, 1);
+    font-size: 30px;
+    margin-top: 34px;
+    height: 28px;
+  }
+  .currency {
+    font-size: 20px;
+    top: -5px;
+    left: 80px;
+  }
+  .slider-box {
+    display: grid;
+    align-items: end;
+  }
+  .btn {
+    text-align: center;
+    position: absolute;
+    bottom: 180px;
+    right: 0;
+    width: 206px;
+    height: 78px;
+    border: 1px solid rgba(217, 255, 90, 1);
+   z-index: 1;
+  }
+  .btn-union {
+    text-align: center;
+    width: 206px;
+    height: 78px;
+    position: absolute;
+    bottom: 0px;
+    right: 0;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(217, 255, 90, 1);
+    z-index:-3;
+  }
+  .btn-text {
+    font-size: 16px;
+    margin-left: 11px;
+    text-align: center;
   }
 }
-</style> 
+</style>

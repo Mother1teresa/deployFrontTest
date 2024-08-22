@@ -25,10 +25,7 @@
                 </div>
                 <a class="" href="#">
                   <span class="circle-heart">
-                    <img
-                      class="heart-image"
-                      src="/src/assets/image/heart.png"
-                    />
+                    <img class="heart-image"  src="/src/assets/image/heart.png" />
                   </span>
                 </a>
               </div>

@@ -22,39 +22,23 @@
             <div class="column-tel">
               <div class="modal-title">Телефон</div>
               <a href="tel" class="column-number nav-link"
-                >+7 (495) 621-26-17</a
-              >
+                >+7 (495) 621-26-17</a>
               <div class="column-text">Ответим на все вопросы</div>
               <img
                 class="column-image"
                 src="/src/assets/image/social.png"
-                alt=""
-              />
+                alt=""/>
             </div>
           </div>
           <div class="column-2">
             <div class="modal-title">Форма обратной связи</div>
             <form class="from">
               <div class="text-field text-field_floating">
-                <input
-                  class="text-field__input"
-                  type="email"
-                  id="reg-email"
-                  placeholder="email"
-                  autocomplete="off"
-                  required
-                />
+                <input class="text-field__input" type="email" id="reg-email" placeholder="email" autocomplete="off" required/>
                 <label class="text-field__label" for="reg-email">e-mail</label>
               </div>
               <div class="text-field text-field_floating">
-                <input
-                  class="text-field__input"
-                  type="text"
-                  id="message"
-                  placeholder="Сообщение"
-                  autocomplete="message"
-                  required
-                />
+                <input class="text-field__input" type="text" id="message" placeholder="Сообщение" autocomplete="message" required/>
                 <label class="text-field__label" for="message">Сообщение</label>
               </div>
               <button type="submit" class="btn">

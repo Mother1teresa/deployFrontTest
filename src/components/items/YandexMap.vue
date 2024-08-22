@@ -14,7 +14,7 @@ export default {
     loadYandexMapsScript() {
       return new Promise((resolve, reject) => {
         if (typeof ymaps !== 'undefined') {
-          resolve(); // API уже загружен
+          resolve(); 
           return;
         }
         
@@ -35,9 +35,9 @@ export default {
 
         const myPlacemark = new ymaps.Placemark([55.756756, 37.643408], null, {
           iconLayout: 'default#image',
-          iconImageHref: yandexLogo, // Используем импортированное изображение
+          iconImageHref: yandexLogo, 
           iconImageSize: [70, 96],
-          iconImageOffset: [-35, -96] // Смещение для центрирования картинки на карте
+          iconImageOffset: [-35, -96] 
         });
 
         map.geoObjects.add(myPlacemark);

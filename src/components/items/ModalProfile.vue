@@ -7,38 +7,18 @@
 
   <transition name="slide">
     <div v-if="isModalPro" class="modal-overlay" @click.self="closeModalPro">
-      <div
-        :class="[
-          'modal-content',
-          smallScreen ? 'small-screen' : 'large-screen',
-        ]"
-        @click.stop
-      >
+      <div :class="[ 'modal-content', smallScreen ? 'small-screen' : 'large-screen', ]" @click.stop>
         <div class="unification">
           <div class="modal-title">{{ isLogin ? "Вход" : "Регистрация" }}</div>
           <button class="close-button" @click="closeModalPro">&times;</button>
         </div>
         <form class="from" v-if="isLogin">
           <div class="text-field text-field_floating">
-            <input
-              class="text-field__input"
-              type="email"
-              id="email"
-              placeholder="email"
-              autocomplete="off"
-              required
-            />
+            <input class="text-field__input"  type="email" id="email" placeholder="email" autocomplete="off" required />
             <label class="text-field__label" for="email">e-mail</label>
           </div>
           <div class="text-field text-field_floating">
-            <input
-              class="text-field__input"
-              type="password"
-              id="password"
-              placeholder="Пароль"
-              autocomplete="current-password"
-              required
-            />
+            <input class="text-field__input"  type="password"  id="password"  placeholder="Пароль" autocomplete="current-password" required />
             <label class="text-field__label" for="password">Пароль</label>
           </div>
           <button type="submit" class="btn">
@@ -47,39 +27,17 @@
         </form>
         <form class="from" v-else>
           <div class="text-field text-field_floating">
-            <input
-              class="text-field__input"
-              type="email"
-              id="reg-email"
-              placeholder="email"
-              autocomplete="off"
-              required
-            />
+            <input class="text-field__input"  type="email"  id="reg-email"  placeholder="email" autocomplete="off" required />
             <label class="text-field__label" for="reg-email">e-mail</label>
           </div>
           <div class="text-field text-field_floating">
-            <input
-              class="text-field__input"
-              type="password"
-              id="reg-password"
-              placeholder="Пароль"
-              autocomplete="new-password"
-              required
-            />
+            <input class="text-field__input" type="password" id="reg-password" placeholder="Пароль" autocomplete="new-password" required />
             <label class="text-field__label" for="reg-password">Пароль</label>
           </div>
           <div class="text-field text-field_floating">
-            <input
-              class="text-field__input"
-              type="password"
-              id="reg-password-repeat"
-              placeholder="Пароль"
-              autocomplete="new-password"
-              required
-            />
+            <input class="text-field__input"  type="password"  id="reg-password-repeat" placeholder="Пароль" autocomplete="new-password"   required />
             <label class="text-field__label" for="reg-password-repeat"
-              >повторите пароль</label
-            >
+              >повторите пароль</label>
           </div>
           <button type="submit" class="btn-reg">
             <span class="btn-reg_text">Регистрация</span>
@@ -230,6 +188,9 @@ export default {
   border-radius: 50%;
   transform: rotate(-7deg);
 }
+.btn-reg:active{
+  border: 2px solid white;
+}
 .btn-reg_text {
   font-size: 20px;
   text-align: center;
@@ -249,6 +210,9 @@ export default {
   border: 2px solid rgba(217, 255, 90, 1);
   border-radius: 50%;
   transform: rotate(-8deg);
+}
+.btn:active{
+  border: 2px solid white;
 }
 .btn-text {
   font-size: 20px;

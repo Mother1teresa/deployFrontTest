@@ -1,19 +1,14 @@
 <template>
-  <div class="container-fluid">
+  
+  <div class="container-fluid" id="catalog">
     <div class="catalog-title">категории</div>
     <div class="items">
-      <div
-        class="item"
-        v-for="catalog in catalogs"
-        :key="catalog.id"
-        :class="{ active: activeCatalogId === catalog.id }"
-      >
+      <div class="item" v-for="catalog in catalogs" :key="catalog.id" :class="{ active: activeCatalogId === catalog.id }">
         <div class="item-subtract">
           <img
             class="image-subtarct"
             src="/src/assets/image/Subtract.png"
-            alt=""
-          />
+            alt=""/>
           <div class="item-title">{{ catalog.title }}</div>
           <div class="item-quantity">
             <span class="quantity-numder">4</span>
@@ -24,13 +19,11 @@
             <button
               class="subtract-btn"
               :class="{ active: activeCatalogId === catalog?.id }"
-              @click="setActiveCatalog(catalog?.id)"
-            >
+              @click="setActiveCatalog(catalog?.id)">
               <span
                 class="arrow-bottom"
-                :class="{ active: activeCatalogId === catalog?.id }"
-              >
-                <img :src="currentArrow" alt="arrow" />
+                :class="{ active: activeCatalogId === catalog?.id }">
+                <img :src="activeCatalogId === catalog.id ? activeArrow : inactiveArrow" alt="arrow" />
               </span>
             </button>
           </div>
@@ -39,39 +32,25 @@
     </div>
 
     <div class="active-catalog-wrapper" v-if="activeCatalogId !== null">
-      <div
-        class="active-catalog"
-        v-for="catalog in catalogs"
-        :key="catalog.id"
-        v-show="activeCatalogId === catalog.id"
-      >
+      <div class="active-catalog"  v-for="catalog in catalogs" :key="catalog.id" v-show="activeCatalogId === catalog.id">
         <div class="active-title">
           <div class="filter">
-            <span
-              ><img
+            <span><img
                 class="image-filter"
                 src="/src/assets/image/filter.png"
-                alt=""
-            /></span>
+                alt=""/></span>
             фильтры
           </div>
           <div class="product-positions">
             20 позиций в категории
-            <!-- {{ catalog.items.length }} -->
+            
           </div>
         </div>
         <div class="items-filter">
           <div class="item-filter" v-for="item in catalog.items" :key="item.id">
             <div class="image-main">
-              <div
-                class="color"
-                :style="{ 'background-color': item.color }"
-              ></div>
-              <img
-                class="active-catalog-mirror"
-                :src="item.imageActive"
-                alt="Image"
-              />
+              <div class="color" :style="{ 'background-color': item.color }"></div>
+              <img class="active-catalog-mirror" :src="item.imageActive" alt="Image"/>
             </div>
             <div class="active-catalog-content">
               <div class="active-catalog_title">{{ item.title }}</div>
@@ -92,9 +71,7 @@
         <div class="btn-position">
           <button class="btn">
             <span class="btn-text">Загрузить еще</span>
-            <span class="column-arrow"
-              ><img src="/src/assets/image/arrow-down.png" alt=""
-            /></span>
+            <span class="column-arrow"><img src="/src/assets/image/arrow-down.png" alt=""/></span>
           </button>
         </div>
       </div>
@@ -134,7 +111,6 @@ export default {
   data() {
     return {
       activeCatalogId: null,
-
       catalogs: [
         {
           id: 1,
@@ -305,6 +281,8 @@ export default {
           ],
         },
       ],
+      activeArrow, 
+      inactiveArrow,
     };
   },
   methods: {
@@ -312,14 +290,7 @@ export default {
       this.activeCatalogId = this.activeCatalogId === id ? null : id;
     },
   },
-  computed: {
-    currentArrow() {
-      const activeCatalog = this.catalogs.find(
-        (catalog) => catalog.id === this.activeCatalogId
-      );
-      return activeCatalog ? activeArrow : inactiveArrow;
-    },
-  },
+  
 };
 </script>
 
@@ -327,7 +298,6 @@ export default {
 .container-fluid {
   padding: 0 60px 0 60px;
   margin-top: 170px;
-  height: 630px;
 }
 .catalog-title {
   display: grid;
@@ -341,7 +311,6 @@ export default {
   width: 100%;
   margin-top: 70px;
   display: flex;
-  /* flex-wrap: wrap; */
   gap: 20px;
   height: 517px;
   margin-bottom: 170px;
@@ -369,7 +338,6 @@ export default {
   border-radius: 50%;
   width: 100px;
   height: 100px;
-  /* position: relative; */
   bottom: -180px;
   left: 16px;
 }
@@ -391,6 +359,10 @@ export default {
 }
 .arrow-bottom.active {
   color: rgba(235, 227, 255, 0.19);
+}
+.arrow-bottom img {
+  width: 20px;
+  height: 34px;
 }
 .image-mirror {
   height: 248px;
@@ -453,8 +425,14 @@ export default {
   opacity: 0;
   transform: rotate(-1.4deg);
 }
-
 /* ActiveCatalog */
+.active-catalog-wrapper {
+  height: 765px;
+  transition: height 0.3s ease;
+}
+.active-catalog-wrapper.active {
+  height: 765px;
+}
 .btn-position {
   margin-top: 150px;
   display: grid;
@@ -473,6 +451,9 @@ export default {
   border-radius: 50%;
   transform: rotate(-13deg);
   background: rgba(255, 255, 255, 0.19);
+}
+.btn:active{
+  border: 2px solid white;
 }
 .btn-text {
   position: absolute;
@@ -639,29 +620,29 @@ export default {
     margin-top: -170px;
     gap: 30px;
   }
-  .item-quantity{
+  .item-quantity {
     width: 46px;
     height: 40px;
     transform: rotate(-22deg);
     top: 85px;
     right: 3px;
   }
-  .quantity-numder{
+  .quantity-numder {
     font-size: 25px;
   }
-  .quantity-text{
+  .quantity-text {
     font-size: 10px;
   }
-  .subtract-btn{
+  .subtract-btn {
     width: 56px;
     height: 56px;
   }
-  .arrow-bottom img{
+  .arrow-bottom img {
     width: 15px;
     height: 19px;
     margin-top: -20px;
   }
-  .active-catalog-wrapper{
+  .active-catalog-wrapper {
     display: none;
   }
 }

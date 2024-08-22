@@ -18,21 +18,14 @@
               <div class="item-content">
                 <div class="item-titles">
                   <div class="item-title_lamp">
-                    <div
-                      class="color"
-                      :style="{ 'background-color': product.color }"
-                    ></div>
+                    <div class="color" :style="{ 'background-color': product.color }"></div>
                     <div class="item-title">{{ product.title }}</div>
                   </div>
                   <div class="item-content_text">{{ product.text }}</div>
                 </div>
                 <a href="#" @click.prevent="removeProduct(product.id)">
                   <span>
-                    <img
-                      class="trash-lime"
-                      src="/src/assets/image/tarsh-lime.png"
-                      alt="trash"
-                    />
+                    <img class="trash-lime" src="/src/assets/image/tarsh-lime.png" alt="trash"/>
                   </span>
                 </a>
               </div>
@@ -71,6 +64,7 @@ import image1 from "/src/assets/image/sophi.png";
 import image2 from "/src/assets/image/sophistica.png";
 import image3 from "/src/assets/image/sophisticated-.png";
 export default {
+  
   data() {
     return {
       isModalOpen: false,

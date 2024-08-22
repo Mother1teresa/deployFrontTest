@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid">
+  <div class="container-fluid" id="blog">
     <div class="blog">
       <div class="blog-main">
         <div class="blog-position">
@@ -76,7 +76,7 @@ export default {
   padding: 0 60px 0 60px;
   margin-top: 170px;
   margin-bottom: 170px;
-  height: 489px;
+  height:  530px;
 }
 .blog-main {
   display: flex;
@@ -102,7 +102,6 @@ export default {
 .blog-content {
   display: flex;
   gap: 30px;
-  /* flex-wrap: wrap; */
   height: 376px;
 }
 .post {
