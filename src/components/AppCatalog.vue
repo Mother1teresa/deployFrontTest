@@ -52,12 +52,13 @@
       >
         <div class="active-title">
           <div class="filter">
-            <span
-              ><img
+            <span>
+              <img
                 class="image-filter"
                 src="/src/assets/image/filter.png"
                 alt=""
-            /></span>
+              />
+            </span>
             фильтры
           </div>
           <div class="product-positions">20 позиций в категории</div>
@@ -95,8 +96,8 @@
           <button class="btn">
             <span class="btn-text">Загрузить еще</span>
             <span class="column-arrow">
-              <img src="/src/assets/image/arrow-down.png" alt=""/>
-          </span>
+              <img src="/src/assets/image/arrow-down.png" alt="" />
+            </span>
           </button>
         </div>
       </div>
@@ -490,11 +491,11 @@ export default {
   color: white;
   font-weight: 500;
   text-align: center;
- 
+
   transform: rotate(13deg);
   margin-bottom: -60px;
 }
-.column-arrow img{
+.column-arrow img {
   transform: rotate(13deg);
   color: rgba(217, 255, 90, 1);
   height: 25px;
@@ -516,6 +517,7 @@ export default {
 .active-title {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-bottom: 73px;
 }
 .filter {
@@ -603,23 +605,16 @@ export default {
   justify-content: space-between;
   margin-top: 15px;
 }
-@media (max-width: 1600px) {
-  .container-fluid {
-    overflow: hidden;
-  }
-}
 @media (max-width: 400px) {
   .container-fluid {
     padding: 0 14px 0 14px;
     margin-top: 120px;
-   
   }
   .catalog-title {
     font-size: 23px;
     justify-content: left;
   }
   .items {
-    height: 288px;
     margin-top: 35px;
     margin-bottom: 0;
   }
@@ -627,14 +622,13 @@ export default {
     width: 216px;
     height: 256px;
   }
-  .items {
-    overflow: hidden;
-  }
   .item {
     width: 238px;
     height: 288px;
   }
   .item-subtract {
+    overflow: hidden;
+    width: 100%;
     justify-items: left;
   }
   .item-title {
@@ -674,8 +668,23 @@ export default {
     height: 19px;
     margin-top: -20px;
   }
-  .active-catalog-wrapper {
-    display: none;
+  .product-positions {
+    font-size: 13px;
+    width: 100px;
+  }
+}
+@media (max-width: 321px) {
+  .btn {
+    cursor: pointer;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    width: 280px;
+    height: 135px;
+    border: 2px solid rgba(217, 255, 90, 1);
+    border-radius: 50%;
+    transform: rotate(-13deg);
+    background: rgba(255, 255, 255, 0.19);
   }
 }
 </style>

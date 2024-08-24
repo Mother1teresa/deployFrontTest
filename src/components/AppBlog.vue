@@ -123,27 +123,29 @@ export default {
   methods: {
     checkScreenWidth() {
       const screenWidth = window.innerWidth;
-      if (screenWidth <= 320) {
+      if (screenWidth == 320) {
         this.slidesToShow = 1;
         this.slideWidth = 305;
-      } else if (screenWidth <= 430) {
+      } else if (screenWidth == 376) {
+        this.slidesToShow = 1;
+        this.slideWidth = 360;
+      } else if (screenWidth <= 426) {
         this.slidesToShow = 1;
         this.slideWidth = 410;
-      } else if (screenWidth <= 768) {
+      } else if (screenWidth <= 769) {
         this.slidesToShow = 1;
-        this.slideWidth = 656;
-      } else if (screenWidth <= 1024) {
+        this.slideWidth = 670;
+      } else if (screenWidth <= 1025) {
         this.slidesToShow = 1;
         this.slideWidth = 1000;
-      } else if (screenWidth <= 1444) {
+      } else if (screenWidth <= 1441) {
         this.slidesToShow = 2;
         this.slideWidth = 650;
-      } 
-      else {
+      } else {
         this.slidesToShow = 3;
         this.slideWidth = 576;
       }
-      if (screenWidth == 2560) {
+      if (screenWidth >= 2559) {
         this.slidesToShow = 4;
         this.slideWidth = 576;
       }
@@ -293,9 +295,8 @@ export default {
 @media (max-width: 1030px) {
   .container-fluid {
     padding: 0 50px 0 50px;
-   
   }
-  .post{
+  .post {
     width: 580px;
     height: 376px;
     position: relative;
@@ -392,13 +393,14 @@ export default {
     width: 100%;
   }
 }
-@media (max-width: 320px) {
+@media (max-width: 321px) {
   .container-fluid {
     padding: 0 8px 0 8px;
     margin-top: 100px;
     margin-bottom: 100px;
     height: 333px;
     width: 100%;
+    overflow: hidden;
   }
   .blog {
     height: 333px;
@@ -424,8 +426,8 @@ export default {
   }
   .post {
     width: 310px;
-    height: 223px;
     position: relative;
+    overflow: hidden;
   }
   .post-image {
     width: 133px;
@@ -467,7 +469,7 @@ export default {
   .post-time {
     width: 50px;
     height: 50px;
-    bottom: -18px;
+    bottom: 26px;
     left: 69px;
     transform: rotate(-15deg);
     border: 1px solid rgba(217, 255, 90, 1);

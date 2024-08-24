@@ -1,5 +1,5 @@
 <template>
-  <div class="content-mian .container-fluidd">
+  <div class="content-mian container-fluidd">
     <div
       v-for="(block, index) in blocks"
       :key="block.id"
@@ -33,13 +33,8 @@
         <div class="text-fon" :style="{ color: block.textFonColor }">
           {{ block.textFon }}
         </div>
+        <ModalViewing />
 
-        <button class="btn">
-          <img src="/src/assets/image/Union.png" alt="" class="union" />
-          <span class="btn-text">Купить</span>
-          <div class="btn-union"></div>
-        </button>
-        
         <div class="block-position">
           <div class="block-box">
             <div class="block-label-open">
@@ -82,7 +77,11 @@ import tablemini from "/src/assets/image/tablemini.png";
 import lampmini from "/src/assets/image/lampmini.png";
 import armchairmini from "/src/assets/image/armchairmini.png";
 
+import ModalViewing from "@/components/items/ModalViewing.vue";
 export default {
+  components: {
+    ModalViewing,
+  },
   data() {
     return {
       isActive: 0,
@@ -150,7 +149,7 @@ export default {
       if (this.windowWidth <= 430 && index !== 0) {
         return { display: "none" };
       }
-      if (this.isActive === null) {
+      if (this.isActive == null) {
         return {
           width: "614px",
           height: "1038px",
@@ -202,16 +201,8 @@ export default {
   padding: 20px 20px;
   height: 1100px;
   width: 100%;
-  justify-content: center;
-}
-.container-fluidd {
-  display: flex;
   gap: 20px;
-
-  width: 100%;
-  height: 100%;
-  position: relative;
-  z-index: 1;
+  justify-content: center;
 }
 .block {
   display: flex;
@@ -331,39 +322,7 @@ export default {
   top: -8px;
   left: 197px;
 }
-.btn {
-  text-align: center;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 356px;
-  height: 135px;
-  border: 2px solid rgba(217, 255, 90, 1);
-  border-radius: 50%;
-}
-.btn-text {
-  font-size: 20px;
-  font-family: "Euclid Circular A", sans-serif;
-  color: white;
-  font-weight: 500;
-  margin-left: 11px;
-  text-align: center;
-}
-.btn:active {
-  border: 2px solid white;
-}
-.btn-union {
-  text-align: center;
-  width: 356px;
-  height: 135px;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  background: rgba(255, 255, 255, 0.19);
-  border: 2px solid rgba(217, 255, 90, 1);
-  border-radius: 50%;
-  transform: rotate(-10deg);
-}
+
 .slider-white {
   display: none;
 }
@@ -377,7 +336,6 @@ export default {
     height: 655px !important;
     border-radius: 0;
   }
-
   .closed-block {
     bottom: 103px;
     right: 105px;
@@ -447,39 +405,12 @@ export default {
     display: grid;
     align-items: end;
   }
-  .btn {
-    text-align: center;
-    position: absolute;
-    bottom: 180px;
-    right: 0;
-    width: 206px;
-    height: 78px;
-    border: 1px solid rgba(217, 255, 90, 1);
-    z-index: 1;
-  }
-  .btn-union {
-    text-align: center;
-    width: 206px;
-    height: 78px;
-    position: absolute;
-    bottom: 0px;
-    right: 0;
-    background: rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(217, 255, 90, 1);
-    z-index: -3;
-  }
-  .btn-text {
-    font-size: 16px;
-    margin-left: 11px;
-    text-align: center;
-  }
+  
 }
 @media (max-width: 380px) {
   .content-mian {
     padding: 0 8px 0 8px;
     width: 100%;
-    width: 320px;
   }
   .block {
     width: 100%;
@@ -487,35 +418,11 @@ export default {
     border-radius: 0;
   }
   .block-position {
+    overflow: hidden;
     width: 100%;
-    justify-content:center;
+    justify-content: center;
     gap: 20px;
   }
-  .btn {
-    text-align: center;
-    position: absolute;
-    bottom: 180px;
-    right: 30px;
-    width: 180px;
-    height: 78px;
-    border: 1px solid rgba(217, 255, 90, 1);
- 
-  }
-  .btn-union {
-    text-align: center;
-    width: 180px;
-    height: 78px;
-    position: absolute;
-    bottom: 0px;
-    right: 0;
-    background: rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(217, 255, 90, 1);
-  }
-  .btn-text {
-    font-size: 16px;
-    margin-left: 11px;
-    text-align: center;
-  }
+  
 }
 </style>

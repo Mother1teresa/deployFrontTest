@@ -79,12 +79,7 @@
           class="search-icon"
         />
       </div>
-      <input
-        type="text"
-        v-show="searchActive"
-        v-model="searchQuery"
-        placeholder="Поиск..."
-        class="search-input"
+      <input type="text" v-show="searchActive" v-model="searchQuery" placeholder="Поиск..." class="search-input"
       />
       <button class="close-button" @click="closeModal">
         <img src="/src/assets/image/close.png" alt="" />
@@ -298,7 +293,7 @@ export default {
     padding: 25px 15px 25px 15px;
   }
   .logo-text {
-    font-size: 40px;
+    font-size: 30px;
   }
   .delet {
     display: none;
@@ -334,9 +329,5 @@ export default {
     width: 360px;
   }
 }
-@media (max-width: 430px) {
-  .logo-text {
-    font-size: 30px;
-  }
-}
+
 </style>
