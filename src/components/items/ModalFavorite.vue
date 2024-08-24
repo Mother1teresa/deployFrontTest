@@ -18,14 +18,20 @@
               <div class="item-content">
                 <div class="item-titles">
                   <div class="item-title_lamp">
-                    <div class="color" :style="{'background-color': product.color}"></div>
+                    <div
+                      class="color"
+                      :style="{ 'background-color': product.color }"
+                    ></div>
                     <div class="item-title">{{ product.title }}</div>
                   </div>
                   <div class="item-content_text">{{ product.text }}</div>
                 </div>
                 <a class="" href="#">
                   <span class="circle-heart">
-                    <img class="heart-image"  src="/src/assets/image/heart.png" />
+                    <img
+                      class="heart-image"
+                      src="/src/assets/image/heart.png"
+                    />
                   </span>
                 </a>
               </div>
@@ -143,9 +149,10 @@ export default {
 .items {
   display: grid;
   gap: 60px;
+  height: 100%;
 }
 .item-info {
-  width: 393px;
+  width: 100%;
 }
 .slide-enter-active,
 .slide-leave-active {
@@ -163,7 +170,7 @@ export default {
 .currency {
   font-size: 20px;
   position: absolute;
-  left: 289px;
+  left: 100px;
 }
 .border-line {
   border: 2px solid rgba(217, 255, 90, 1);
@@ -185,8 +192,10 @@ export default {
 .item-content {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 .item-quantity {
+  position: relative;
   display: flex;
   justify-content: space-between;
 }
@@ -225,7 +234,6 @@ export default {
 .imageUrl {
   width: 90px;
 }
-
 .item-title_lamp {
   display: flex;
   align-items: center;
@@ -238,13 +246,15 @@ export default {
   border-radius: 50%;
 }
 @media (max-width: 1600px) {
+  .modal-overlay {
+    width: 100%;
+    height: 100%;
+    padding: 20px 15px;
+  }
   .modal-content {
     width: 450px;
-    height: 550px;
+    height: 530px;
     padding: 30px;
-  }
-  .item {
-    width: 100%;
   }
   .model-result {
     margin-top: 38px;
@@ -253,8 +263,8 @@ export default {
     font-size: 34px;
   }
   .item {
-    width: 370px;
-    height: 80px;
+    width: 380px;
+    height: 120px;
     padding: 6px;
     display: flex;
     gap: 31px;
@@ -262,12 +272,18 @@ export default {
   .items {
     gap: 30px;
   }
+  .item-info{
+    width: 270px;
+  }
   .modal-title {
     margin-bottom: 20px;
   }
   .item-title {
     font-size: 17px;
     height: 23px;
+  }
+  .item-content{
+    margin-bottom: 12px;
   }
   .item-content_text {
     margin: 0;
@@ -280,6 +296,20 @@ export default {
   }
   .border-line {
     border: 1px solid rgba(217, 255, 90, 1);
+    width: 270px;
+  }
+  .circle-heart {
+    width: 50px;
+    height: 50px;
+  }
+  .imageUrl {
+    width: 67px;
+  }
+  .currency{
+   left: 100px;
+  }
+  .item-quantity{
+    width: 270px;
   }
 }
 @media (max-width: 400px) {

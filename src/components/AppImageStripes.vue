@@ -55,6 +55,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 .strip {
   position: absolute;
@@ -67,10 +68,12 @@ export default {
 .blue-strip {
   background-color: rgba(174, 206, 255, 1);
   transform: rotate(2deg);
+  width: 100%;
 }
 .purple-strip {
   background-color: rgba(203, 182, 255, 1);
   transform: rotate(-5deg);
+  width: 100%;
 }
 .moving-text {
   text-transform: uppercase;
@@ -91,6 +94,11 @@ export default {
   }
   to {
     transform: translateX(-30%);
+  }
+}
+@media (max-width: 2560px){
+  .strip-container {
+    height: 300px;
   }
 }
 @media (max-width: 400px) {

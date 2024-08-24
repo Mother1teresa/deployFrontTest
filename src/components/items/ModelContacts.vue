@@ -319,7 +319,15 @@ export default {
 .open-icon {
   display: none;
 }
-@media (max-width: 400px) {
+@media (max-width: 1200px){
+  .delet {
+    display: none;
+  }
+  .open-icon{
+    display: grid;
+  }
+}
+@media (max-width: 430px) {
   .modal-overlay {
     max-width: 100%;
     max-height: 100%;

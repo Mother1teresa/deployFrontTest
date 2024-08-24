@@ -1,14 +1,19 @@
 <template>
-  
   <div class="container-fluid" id="catalog">
     <div class="catalog-title">категории</div>
     <div class="items">
-      <div class="item" v-for="catalog in catalogs" :key="catalog.id" :class="{ active: activeCatalogId === catalog.id }">
+      <div
+        class="item"
+        v-for="catalog in catalogs"
+        :key="catalog.id"
+        :class="{ active: activeCatalogId === catalog.id }"
+      >
         <div class="item-subtract">
           <img
             class="image-subtarct"
             src="/src/assets/image/Subtract.png"
-            alt=""/>
+            alt=""
+          />
           <div class="item-title">{{ catalog.title }}</div>
           <div class="item-quantity">
             <span class="quantity-numder">4</span>
@@ -19,11 +24,18 @@
             <button
               class="subtract-btn"
               :class="{ active: activeCatalogId === catalog?.id }"
-              @click="setActiveCatalog(catalog?.id)">
+              @click="setActiveCatalog(catalog?.id)"
+            >
               <span
                 class="arrow-bottom"
-                :class="{ active: activeCatalogId === catalog?.id }">
-                <img :src="activeCatalogId === catalog.id ? activeArrow : inactiveArrow" alt="arrow" />
+                :class="{ active: activeCatalogId === catalog?.id }"
+              >
+                <img
+                  :src="
+                    activeCatalogId === catalog.id ? activeArrow : inactiveArrow
+                  "
+                  alt="arrow"
+                />
               </span>
             </button>
           </div>
@@ -32,25 +44,36 @@
     </div>
 
     <div class="active-catalog-wrapper" v-if="activeCatalogId !== null">
-      <div class="active-catalog"  v-for="catalog in catalogs" :key="catalog.id" v-show="activeCatalogId === catalog.id">
+      <div
+        class="active-catalog"
+        v-for="catalog in catalogs"
+        :key="catalog.id"
+        v-show="activeCatalogId === catalog.id"
+      >
         <div class="active-title">
           <div class="filter">
-            <span><img
+            <span
+              ><img
                 class="image-filter"
                 src="/src/assets/image/filter.png"
-                alt=""/></span>
+                alt=""
+            /></span>
             фильтры
           </div>
-          <div class="product-positions">
-            20 позиций в категории
-            
-          </div>
+          <div class="product-positions">20 позиций в категории</div>
         </div>
         <div class="items-filter">
           <div class="item-filter" v-for="item in catalog.items" :key="item.id">
             <div class="image-main">
-              <div class="color" :style="{ 'background-color': item.color }"></div>
-              <img class="active-catalog-mirror" :src="item.imageActive" alt="Image"/>
+              <div
+                class="color"
+                :style="{ 'background-color': item.color }"
+              ></div>
+              <img
+                class="active-catalog-mirror"
+                :src="item.imageActive"
+                alt="Image"
+              />
             </div>
             <div class="active-catalog-content">
               <div class="active-catalog_title">{{ item.title }}</div>
@@ -71,7 +94,9 @@
         <div class="btn-position">
           <button class="btn">
             <span class="btn-text">Загрузить еще</span>
-            <span class="column-arrow"><img src="/src/assets/image/arrow-down.png" alt=""/></span>
+            <span class="column-arrow">
+              <img src="/src/assets/image/arrow-down.png" alt=""/>
+          </span>
           </button>
         </div>
       </div>
@@ -281,7 +306,7 @@ export default {
           ],
         },
       ],
-      activeArrow, 
+      activeArrow,
       inactiveArrow,
     };
   },
@@ -290,7 +315,6 @@ export default {
       this.activeCatalogId = this.activeCatalogId === id ? null : id;
     },
   },
-  
 };
 </script>
 
@@ -309,13 +333,14 @@ export default {
 }
 .items {
   width: 100%;
+  height: 100%;
   margin-top: 70px;
   display: flex;
-  height: 517px;
+  flex-wrap: wrap;
   margin-bottom: 170px;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 30px;
 }
-
 .item {
   width: 428px;
   height: 517px;
@@ -428,52 +453,52 @@ export default {
 }
 /* ActiveCatalog */
 .active-catalog-wrapper {
-  height: 765px;
+  height: 100%;
   transition: height 0.3s ease;
 }
 .active-catalog-wrapper.active {
-  height: 765px;
+  height: 100%;
 }
 .btn-position {
-  margin-top: 150px;
+  margin-top: 51px;
+  height: 203px;
   display: grid;
   justify-items: center;
+  align-content: center;
 }
 .btn {
-  display: flex;
+  cursor: pointer;
+  display: grid;
   align-items: center;
   justify-content: center;
-  position: relative;
-  bottom: 1;
-  right: 0;
-  width: 356px;
+  width: 319px;
   height: 135px;
   border: 2px solid rgba(217, 255, 90, 1);
   border-radius: 50%;
   transform: rotate(-13deg);
   background: rgba(255, 255, 255, 0.19);
 }
-.btn:active{
+.btn:active {
   border: 2px solid white;
 }
 .btn-text {
-  position: absolute;
+  display: grid;
+  align-items: center;
+  height: 40px;
   font-size: 20px;
   font-family: "Euclid Circular A", sans-serif;
   color: white;
   font-weight: 500;
-  margin-left: 11px;
-  margin-bottom: 17px;
   text-align: center;
-  cursor: pointer;
+ 
   transform: rotate(13deg);
+  margin-bottom: -60px;
 }
-.column-arrow {
+.column-arrow img{
   transform: rotate(13deg);
   color: rgba(217, 255, 90, 1);
-  font-size: 37px;
-  height: 30px;
-  margin-bottom: -20px;
+  height: 25px;
+  /* margin-top: -10px; */
 }
 .union-text {
   font-size: 20px;
@@ -486,7 +511,7 @@ export default {
 }
 .active-catalog {
   margin-top: 63px;
-  height: 765px;
+  height: 100%;
 }
 .active-title {
   display: flex;
@@ -520,6 +545,7 @@ export default {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 107px;
 }
 .image-main {
@@ -575,18 +601,18 @@ export default {
 .amount {
   display: flex;
   justify-content: space-between;
-  margin-top: 18px;
+  margin-top: 15px;
 }
 @media (max-width: 1600px) {
   .container-fluid {
-  overflow: hidden;
+    overflow: hidden;
   }
 }
 @media (max-width: 400px) {
   .container-fluid {
     padding: 0 14px 0 14px;
     margin-top: 120px;
-    height: 352px;
+   
   }
   .catalog-title {
     font-size: 23px;

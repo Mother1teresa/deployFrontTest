@@ -337,6 +337,7 @@ export default {
     margin-top: 38px;
   }
   .btn {
+    margin-top: 15px;
     width: 140px;
     height: 70px;
   }
@@ -409,6 +410,9 @@ export default {
   }
   .currency-line {
     left: 150px;
+  }
+  .imageUrl {
+    width: 42px;
   }
 }
 @media (max-width: 400px) {

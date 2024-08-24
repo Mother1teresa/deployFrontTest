@@ -39,7 +39,14 @@ export default {
   gap: 36px;
   margin-right: 15px;
 }
-@media (max-width: 400px) {
+@media (max-width: 1200px) {
+  .personal {
+    gap: 38px;
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 430px) {
   .personal {
     gap: 18px;
     margin-right: 0;

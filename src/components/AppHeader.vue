@@ -251,9 +251,54 @@ export default {
     gap: 140px;
   }
 }
-@media (max-width: 400px) {
+@media (max-width: 1200px) {
+  .container-fluid {
+    padding: 50px 50px 0 50px;
+  }
+  .logo-text {
+    font-size: 40px;
+  }
+ 
+  .open-ul {
+    display: grid;
+  }
+  .open ul {
+    display: flex;
+    justify-content: space-between;
+  }
+  .nav-item {
+    display: grid;
+    align-content: center;
+  }
+  li {
+    list-style-type: none;
+  }
+  ul {
+    margin-left: 0;
+    padding-left: 0;
+  }
+  .open-box {
+    display: flex;
+    gap: 38px;
+  }
+  .search-bar {
+    height: 58px;
+    margin-top: 3px;
+    width: 360px;
+  }
+  .delet {
+    display: none;
+  }
+  .open {
+    display: grid;
+  }
+}
+@media (max-width: 430px) {
   .container-fluid {
     padding: 25px 15px 25px 15px;
+  }
+  .logo-text {
+    font-size: 40px;
   }
   .delet {
     display: none;
@@ -287,6 +332,11 @@ export default {
     height: 58px;
     margin-top: 3px;
     width: 360px;
+  }
+}
+@media (max-width: 430px) {
+  .logo-text {
+    font-size: 30px;
   }
 }
 </style>

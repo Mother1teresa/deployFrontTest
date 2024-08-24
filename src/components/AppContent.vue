@@ -8,7 +8,8 @@
         { expanded: isActive === index, hidden: shouldHideBlock(index) },
       ]"
       @click="toggleBlock(index)"
-      :style="getBlockStyle(index)">
+      :style="getBlockStyle(index)"
+    >
       <div
         class="block-image"
         :style="{
@@ -16,7 +17,9 @@
             isActive === index ? block.imageOpen : block.imageClosed
           })`,
           width: isActive === index ? '494px' : block.widthClosed,
-          height: isActive === index ? '724px' : block.heightClosed,}"></div>
+          height: isActive === index ? '724px' : block.heightClosed,
+        }"
+      ></div>
 
       <div v-if="isActive !== index && isActive !== null" class="closed-block">
         <div class="block-label">
@@ -32,10 +35,11 @@
         </div>
 
         <button class="btn">
-          <div class="btn-union"></div>
           <img src="/src/assets/image/Union.png" alt="" class="union" />
           <span class="btn-text">Купить</span>
+          <div class="btn-union"></div>
         </button>
+        
         <div class="block-position">
           <div class="block-box">
             <div class="block-label-open">
@@ -143,7 +147,7 @@ export default {
       this.isActive = this.isActive === index ? null : index;
     },
     getBlockStyle(index) {
-      if (this.windowWidth <= 400 && index !== 0) {
+      if (this.windowWidth <= 430 && index !== 0) {
         return { display: "none" };
       }
       if (this.isActive === null) {
@@ -198,7 +202,7 @@ export default {
   padding: 20px 20px;
   height: 1100px;
   width: 100%;
-  justify-content: space-between;
+  justify-content: center;
 }
 .container-fluidd {
   display: flex;
@@ -363,7 +367,7 @@ export default {
 .slider-white {
   display: none;
 }
-@media (max-width: 400px) {
+@media (max-width: 430px) {
   .content-mian {
     padding: 0 8px 0 15px;
     height: 655px !important;
@@ -373,6 +377,7 @@ export default {
     height: 655px !important;
     border-radius: 0;
   }
+
   .closed-block {
     bottom: 103px;
     right: 105px;
@@ -381,14 +386,12 @@ export default {
     width: 236px !important;
     height: 346px !important;
     margin-top: -100px;
-
   }
   .text-fon {
     font-size: 71px;
     width: 361px;
     text-align: left;
     margin-bottom: 123px;
-   
   }
   .block-content {
     padding-left: 0;
@@ -452,7 +455,7 @@ export default {
     width: 206px;
     height: 78px;
     border: 1px solid rgba(217, 255, 90, 1);
-   z-index: 1;
+    z-index: 1;
   }
   .btn-union {
     text-align: center;
@@ -464,7 +467,50 @@ export default {
     background: rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(217, 255, 90, 1);
-    z-index:-3;
+    z-index: -3;
+  }
+  .btn-text {
+    font-size: 16px;
+    margin-left: 11px;
+    text-align: center;
+  }
+}
+@media (max-width: 380px) {
+  .content-mian {
+    padding: 0 8px 0 8px;
+    width: 100%;
+    width: 320px;
+  }
+  .block {
+    width: 100%;
+    height: 655px !important;
+    border-radius: 0;
+  }
+  .block-position {
+    width: 100%;
+    justify-content:center;
+    gap: 20px;
+  }
+  .btn {
+    text-align: center;
+    position: absolute;
+    bottom: 180px;
+    right: 30px;
+    width: 180px;
+    height: 78px;
+    border: 1px solid rgba(217, 255, 90, 1);
+ 
+  }
+  .btn-union {
+    text-align: center;
+    width: 180px;
+    height: 78px;
+    position: absolute;
+    bottom: 0px;
+    right: 0;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(217, 255, 90, 1);
   }
   .btn-text {
     font-size: 16px;

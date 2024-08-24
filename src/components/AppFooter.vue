@@ -75,7 +75,7 @@ export default {};
 .btn:active {
   border: 2px solid white;
 }
-@media (max-width: 400px) {
+@media (max-width: 430px) {
   .container-fluid {
     width: 100%;
     height: auto;
@@ -86,7 +86,6 @@ export default {};
     align-items: center;
     position: relative;
   }
-
   .footer-num,
   .footer-title {
     display: block;
@@ -130,6 +129,24 @@ export default {};
   .group {
     width: 30px;
     height: 30px;
+  }
+}
+@media (max-width: 380px){
+  .container-fluid {
+    padding: 0 8px 0 8px;
+  }
+  .btn {
+    right: 15px;
+    bottom: 15px;
+    position: absolute;
+    width: 136px;
+    height: 76px;
+    transform: rotate(-15deg);
+    align-self: flex-start;
+  }
+  .btn-text{
+    margin-top: 3px;
+    margin-right: -15px;
   }
 }
 </style>
