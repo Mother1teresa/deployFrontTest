@@ -113,46 +113,32 @@ export default {
       };
     },
   },
+
+  methods: {
+    checkScreenWidth() {
+      const screenWidth = window.innerWidth;
+      if (screenWidth >= 2560) {
+        this.slidesToShow = 4;
+      } else if (screenWidth >= 2305) {
+        this.slidesToShow = 3;
+      } else if (screenWidth >= 1877) {
+        this.slidesToShow = 2;
+      } else if (screenWidth >= 1441) {
+        this.slidesToShow = 2;
+      } else if (screenWidth <= 1024) {
+        this.slidesToShow = 1;
+      }
+    },
+    onSlideChange(swiper) {
+      this.swiper = swiper;
+    },
+  },
   mounted() {
     this.checkScreenWidth();
     window.addEventListener("resize", this.checkScreenWidth);
   },
   beforeDestroy() {
     window.removeEventListener("resize", this.checkScreenWidth);
-  },
-  methods: {
-    checkScreenWidth() {
-      const screenWidth = window.innerWidth;
-      if (screenWidth == 320) {
-        this.slidesToShow = 1;
-        this.slideWidth = 305;
-      } else if (screenWidth == 376) {
-        this.slidesToShow = 1;
-        this.slideWidth = 360;
-      } else if (screenWidth <= 426) {
-        this.slidesToShow = 1;
-        this.slideWidth = 410;
-      } else if (screenWidth <= 769) {
-        this.slidesToShow = 1;
-        this.slideWidth = 670;
-      } else if (screenWidth <= 1025) {
-        this.slidesToShow = 1;
-        this.slideWidth = 1000;
-      } else if (screenWidth <= 1441) {
-        this.slidesToShow = 2;
-        this.slideWidth = 650;
-      } else {
-        this.slidesToShow = 3;
-        this.slideWidth = 576;
-      }
-      if (screenWidth >= 2559) {
-        this.slidesToShow = 4;
-        this.slideWidth = 576;
-      }
-    },
-    onSlideChange(swiper) {
-      this.swiper = swiper;
-    },
   },
 };
 </script>
