@@ -68,8 +68,8 @@
             <div class="image-main">
               <div
                 class="color"
-                :style="{ 'background-color': item.color }"
-              ></div>
+                :style="{ 'background-color': item.color }">
+            </div>
               <img
                 class="active-catalog-mirror"
                 :src="item.imageActive"
