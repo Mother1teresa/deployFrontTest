@@ -254,7 +254,7 @@ export default {
 }
 .modal-content {
   width: 619px;
-  height: 906px;
+  max-height: 100%;
   background-color: rgba(52, 32, 101, 0.174);
   backdrop-filter: blur(80px);
   padding: 48px;
@@ -263,7 +263,8 @@ export default {
   top: 130px;
   right: 0;
   transition: transform 0.7s ease;
-  border-radius: 30px;
+  border-radius: 30px; 
+  overflow-x: auto; 
 }
 .close-button {
   position: absolute;
@@ -323,8 +324,9 @@ export default {
 }
 @media (max-width: 1600px) {
   .modal-content {
+    top: 110px;
     width: 450px;
-    height: 550px;
+    max-height: 100%;
     padding: 30px;
   }
   .item {
@@ -415,7 +417,15 @@ export default {
     width: 42px;
   }
 }
-@media (max-width: 400px) {
+@media (max-width:770px) {
+  .modal-content {
+  top: 100px;
+  right: -20px;
+  overflow-x: auto; 
+  max-height: 100%;
+}
+}
+@media (max-width: 430px){
   .modal-overlay {
     width: 100%;
     height: 100%;
@@ -424,12 +434,12 @@ export default {
   .modal-content {
     top: 20px;
     left: 80px;
-    width: 360px;
-    height: 708px;
+    width: 390px;
+    max-height: 708px;
     top: 20px;
     padding: 22px 15px 15px 18px;
     border-radius: 20px;
-    overflow: hidden;
+    
   }
   .item {
     height: 120px;
@@ -506,18 +516,13 @@ export default {
     font-size: 20px;
     left: 110px;
   }
-  .btn {
-    width: 155px;
-    height: 91px;
-    border: 1px solid rgba(217, 255, 90, 1);
-    -webkit-border-radius: 155px / 91px;
-    -moz-border-radius: 155px / 91px;
-    border-radius: 155px / 91px;
+  .btn{
+   margin-top: -5px;
   }
   .btn-text {
     font-size: 16px;
-    right: 34px;
-    top: 30px;
+    right: 30px;
+    top: 20px;
   }
   .item-quantity {
     width: 224px;
@@ -525,6 +530,219 @@ export default {
   .item-button {
     justify-content: right;
     height: 45px;
+  }
+}
+@media (max-width: 400px) {
+  .modal-overlay {
+    width: 100%;
+    height: 100%;
+    padding: 20px 15px;
+  }
+  .modal-content {
+    top: 20px;
+    left: 70px;
+    width: 350px;
+    max-height: 100%;
+    top: 20px;
+    padding: 22px 15px 15px 18px;
+    border-radius: 20px;
+  }
+  .item {
+    height: 120px;
+    width: 320px;
+  }
+  .imageUrl {
+    width: 67px;
+  }
+  .modal-title {
+    font-size: 15px;
+    margin-bottom: 50px;
+  }
+  .item-title {
+    font-size: 15px;
+  }
+  .border-line {
+    width: 200px;
+  }
+  .modal-title {
+    margin-bottom: 42px;
+  }
+  .item-content_text {
+    font-size: 13px;
+  }
+  .trash-lime {
+    width: 30px;
+    height: 33px;
+  }
+  .item-content {
+    width: 200px;
+    height: 53px;
+    margin-bottom: 0;
+  }
+  .item-quantity-result {
+    font-size: 25px;
+    margin-top: 26px;
+    letter-spacing: 1px;
+  }
+  .currency {
+    font-size: 13px;
+    left: 195px;
+  }
+  .circle-heart {
+    width: 50px;
+    height: 50px;
+  }
+  .heart-image {
+    width: 22px;
+    height: 20px;
+  }
+  .item-quantity {
+    width: 220px;
+  }
+  .minus-btn {
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(255, 255, 255, 1);
+  }
+  .plus-btn {
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(255, 255, 255, 1);
+  }
+  .amount-text {
+    text-transform: capitalize;
+    font-size: 13px;
+  }
+  .amount-result {
+    font-size: 30px;
+    margin-top: 4px;
+    letter-spacing: 1px;
+  }
+  .currency-line {
+    font-size: 20px;
+    left: 110px;
+  }
+  .btn {
+    width: 155px;
+    height: 91px;
+    border: 1px solid rgba(217, 255, 90, 1);
+   border-radius: 50%;
+  }
+  .btn-text {
+    font-size: 16px;
+    right: 34px;
+    top: 30px;
+  }
+  .item-quantity {
+    width: 200px;
+  }
+  .item-button {
+    justify-content: right;
+    height: 45px;
+  }
+}
+@media (max-width:321px) {
+  .modal-content {
+    top: 20px;
+    left: 70px;
+    width: 300px;
+    max-height: 100%;
+    top: 20px;
+    padding: 22px 15px 15px 18px;
+    border-radius: 20px;
+  }
+  .item {
+    height: 120px;
+    width: 280px;
+  }
+  .imageUrl {
+    width: 67px;
+  }
+  .modal-title {
+    font-size: 15px;
+    margin-bottom: 50px;
+  }
+  .item-title {
+    font-size: 15px;
+  }
+  .border-line {
+    width: 160px;
+  }
+  .modal-title {
+    margin-bottom: 42px;
+  }
+  .item-content_text {
+    font-size: 13px;
+  }
+  .trash-lime {
+    width: 30px;
+    height: 33px;
+  }
+  .item-content {
+    width: 160px;
+    height: 53px;
+    margin-bottom: 0;
+  }
+  .item-quantity-result {
+    font-size: 16px;
+    margin-top: 16px;
+    letter-spacing: 0;
+  }
+  .currency {
+    font-size: 13px;
+    left: 170px;
+  }
+  .circle-heart {
+    width: 50px;
+    height: 50px;
+  }
+  .heart-image {
+    width: 22px;
+    height: 20px;
+  }
+  .item-quantity {
+    width: 160px;
+  }
+  .minus-btn {
+    width: 30px;
+    height: 30px;
+    border: 1px solid rgba(255, 255, 255, 1);
+  }
+  .plus-btn {
+    width: 30px;
+    height: 30px;
+    border: 1px solid rgba(255, 255, 255, 1);
+  }
+  .amount-text {
+    text-transform: capitalize;
+    font-size: 12px;
+  }
+  .amount-result {
+    font-size: 30px;
+    margin-top: 4px;
+    letter-spacing: 1px;
+  }
+  .currency-line {
+    font-size: 20px;
+    left: 110px;
+  }
+  .btn {
+    width: 120px;
+    height: 61px;
+    border: 1px solid rgba(217, 255, 90, 1);
+   border-radius: 50%;
+  }
+  .btn-text {
+    font-size: 16px;
+    top: 14px;
+    left: 18px;
+  }
+  .item-quantity {
+    width: 160px;
+  }
+  .item-button {
+    justify-content: right;
+    height: 30px;
   }
 }
 </style>

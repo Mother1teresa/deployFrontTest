@@ -1532,16 +1532,19 @@ export default {
 @media (max-width: 1640px){
   .modal-image {
     position: absolute;
-    top: 60px;
+    top: 80px;
     left: 640px;
-    width: 260px;
-    height: 334px;
+    width: 330px;
+    height: 434px;
   }
   .modal-price{
     height: 50px;
   }
  .body-content_image{
-  margin-left: -150px;
+  margin-left: -100px;
+ }
+ .modal-active{
+  height: 300px !important;
  }
 }
 @media (max-width: 1440px) {

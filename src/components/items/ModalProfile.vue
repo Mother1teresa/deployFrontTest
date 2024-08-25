@@ -7,18 +7,38 @@
 
   <transition name="slide">
     <div v-if="isModalPro" class="modal-overlay" @click.self="closeModalPro">
-      <div :class="[ 'modal-content', smallScreen ? 'small-screen' : 'large-screen', ]" @click.stop>
+      <div
+        :class="[
+          'modal-content',
+          smallScreen ? 'small-screen' : 'large-screen',
+        ]"
+        @click.stop
+      >
         <div class="unification">
           <div class="modal-title">{{ isLogin ? "Вход" : "Регистрация" }}</div>
           <button class="close-button" @click="closeModalPro">&times;</button>
         </div>
         <form class="from" v-if="isLogin">
           <div class="text-field text-field_floating">
-            <input class="text-field__input"  type="email" id="email" placeholder="email" autocomplete="off" required />
+            <input
+              class="text-field__input"
+              type="email"
+              id="email"
+              placeholder="email"
+              autocomplete="off"
+              required
+            />
             <label class="text-field__label" for="email">e-mail</label>
           </div>
           <div class="text-field text-field_floating">
-            <input class="text-field__input"  type="password"  id="password"  placeholder="Пароль" autocomplete="current-password" required />
+            <input
+              class="text-field__input"
+              type="password"
+              id="password"
+              placeholder="Пароль"
+              autocomplete="current-password"
+              required
+            />
             <label class="text-field__label" for="password">Пароль</label>
           </div>
           <button type="submit" class="btn">
@@ -27,17 +47,39 @@
         </form>
         <form class="from" v-else>
           <div class="text-field text-field_floating">
-            <input class="text-field__input"  type="email"  id="reg-email"  placeholder="email" autocomplete="off" required />
+            <input
+              class="text-field__input"
+              type="email"
+              id="reg-email"
+              placeholder="email"
+              autocomplete="off"
+              required
+            />
             <label class="text-field__label" for="reg-email">e-mail</label>
           </div>
           <div class="text-field text-field_floating">
-            <input class="text-field__input" type="password" id="reg-password" placeholder="Пароль" autocomplete="new-password" required />
+            <input
+              class="text-field__input"
+              type="password"
+              id="reg-password"
+              placeholder="Пароль"
+              autocomplete="new-password"
+              required
+            />
             <label class="text-field__label" for="reg-password">Пароль</label>
           </div>
           <div class="text-field text-field_floating">
-            <input class="text-field__input"  type="password"  id="reg-password-repeat" placeholder="Пароль" autocomplete="new-password"   required />
+            <input
+              class="text-field__input"
+              type="password"
+              id="reg-password-repeat"
+              placeholder="Пароль"
+              autocomplete="new-password"
+              required
+            />
             <label class="text-field__label" for="reg-password-repeat"
-              >повторите пароль</label>
+              >повторите пароль</label
+            >
           </div>
           <button type="submit" class="btn-reg">
             <span class="btn-reg_text">Регистрация</span>
@@ -118,7 +160,7 @@ export default {
 }
 .modal-content {
   width: 610px;
-  height: 100%;
+  max-height: 100%;
   background-color: rgba(52, 32, 101, 0.174);
   backdrop-filter: blur(80px);
   padding: 48px;
@@ -128,6 +170,7 @@ export default {
   right: 0;
   transition: transform 0.7s ease;
   border-radius: 30px;
+  overflow-x: auto;
 }
 .small-screen {
   width: 360px;
@@ -188,7 +231,7 @@ export default {
   border-radius: 50%;
   transform: rotate(-7deg);
 }
-.btn-reg:active{
+.btn-reg:active {
   border: 2px solid white;
 }
 .btn-reg_text {
@@ -211,7 +254,7 @@ export default {
   border-radius: 50%;
   transform: rotate(-8deg);
 }
-.btn:active{
+.btn:active {
   border: 2px solid white;
 }
 .btn-text {
@@ -355,19 +398,176 @@ export default {
   margin-right: 25px;
 }
 
-@media (max-width: 400px) {
+@media (max-width: 1600px) {
+  .modal-content {
+    top: 110px;
+    width: 450px;
+    max-height: 100%;
+    padding: 30px;
+  }
+  .model-result {
+    margin-top: 38px;
+  }
+  .close-button {
+    font-size: 34px;
+  }
+  .item {
+    width: 380px;
+    height: 120px;
+    padding: 6px;
+    display: flex;
+    gap: 31px;
+  }
+  .items {
+    gap: 30px;
+  }
+  .item-info {
+    width: 270px;
+  }
+  .modal-title {
+    margin-bottom: 20px;
+  }
+  .item-title {
+    font-size: 17px;
+    height: 23px;
+  }
+  .item-content {
+    margin-bottom: 12px;
+  }
+  .item-content_text {
+    margin: 0;
+    height: 25px;
+    font-size: 16px;
+  }
+  .item-quantity-result {
+    font-size: 25px;
+    margin-top: 10px;
+  }
+  .border-line {
+    border: 1px solid rgba(217, 255, 90, 1);
+    width: 270px;
+  }
+  .circle-heart {
+    width: 50px;
+    height: 50px;
+  }
+  .imageUrl {
+    width: 67px;
+  }
+  .currency {
+    left: 100px;
+  }
+  .item-quantity {
+    width: 270px;
+  }
+  .model-block {
+    margin-bottom: 12px;
+  }
+}
+@media (max-width: 770px) {
+  .modal-content {
+    top: 100px;
+    right: -20px;
+    overflow-x: auto;
+    max-height: 100%;
+  }
+  .model-block {
+    margin-bottom: 12px;
+  }
+}
+@media (max-width: 430px) {
   .modal-overlay {
+    width: 100%;
     height: 100%;
     padding: 20px 15px;
   }
   .modal-content {
     top: 20px;
     left: 80px;
+    width: 390px;
+    max-height: 100%;
+    top: 20px;
+    padding: 22px 15px 15px 18px;
+    border-radius: 20px;
+  }
+  .item {
+    height: 120px;
+    width: 330px;
+  }
+  .imageUrl {
+    width: 67px;
+  }
+  .modal-title {
+    font-size: 15px;
+    margin-bottom: 50px;
+  }
+  .item-title {
+    font-size: 15px;
+  }
+  .border-line {
+    width: 220px;
+  }
+  .modal-title {
+    margin-bottom: 42px;
+  }
+  .item-content_text {
+    font-size: 13px;
+  }
+  .trash-lime {
+    width: 30px;
+    height: 33px;
+  }
+  .item-content {
+    width: 224px;
+    height: 53px;
+    margin-bottom: 0;
+  }
+  .item-quantity-result {
+    font-size: 25px;
+    margin-top: 16px;
+    letter-spacing: 1px;
+  }
+  .model-block {
+    margin-bottom: 12px;
+  }
+  .currency {
+    font-size: 13px;
+    left: 80px;
+  }
+
+  .btn-reg_text {
+    font-size: 16px;
+    right: 18px;
+    top: 15px;
+  }
+  .model-block_account,
+  .model-block_registration {
+    font-size: 14px;
+  }
+  .model-block {
+    margin-top: 28px;
+  }
+  .btn,
+  .btn-reg {
+    margin-top: 28px;
+  }
+  .btn-reg {
+    width: 134px;
+    height: 61px;
+    background: rgba(235, 227, 255, 0.19);
+    border: 1px solid rgba(217, 255, 90, 1);
+    border-radius: 50%;
+  }
+}
+
+@media (max-width: 400px) {
+  .modal-content {
+    top: 20px;
+    left: 70px;
     width: 360px;
     max-height: 100%;
     padding: 22px 15px 22px 15px;
     border-radius: 20px;
-    overflow: hidden;
   }
   .close-button {
     font-size: 35px;
@@ -411,6 +611,68 @@ export default {
   .btn-reg {
     width: 154px;
     height: 91px;
+    background: rgba(235, 227, 255, 0.19);
+    border: 1px solid rgba(217, 255, 90, 1);
+    border-radius: 50%;
+  }
+}
+@media (max-width: 321px) {
+  .modal-content {
+    top: 20px;
+    left: 70px;
+    width: 300px;
+    max-height: 100%;
+    top: 20px;
+    padding: 22px 15px 15px 18px;
+    border-radius: 20px;
+  }
+  .close-button {
+    font-size: 35px;
+    top: -10px;
+    right: -8px;
+  }
+  .text-field__input {
+    width: 260px;
+  }
+  .modal-title {
+    font-size: 15px;
+    width: 47px;
+    margin-left: 5px;
+  }
+  .unification {
+    width: 260px;
+  }
+  .from {
+    width: 260px;
+  }
+  .btn-text {
+    font-size: 16px;
+    right: 40px;
+    top: 15px;
+  }
+  .btn {
+    width: 134px;
+    height: 61px;
+  }
+  .btn-reg_text {
+    font-size: 16px;
+    right: 18px;
+    top: 15px;
+  }
+  .model-block_account,
+  .model-block_registration {
+    font-size: 10px;
+  }
+  .model-block {
+    margin-top: 28px;
+  }
+  .btn,
+  .btn-reg {
+    margin-top: 28px;
+  }
+  .btn-reg {
+    width: 134px;
+    height: 61px;
     background: rgba(235, 227, 255, 0.19);
     border: 1px solid rgba(217, 255, 90, 1);
     border-radius: 50%;

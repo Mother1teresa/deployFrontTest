@@ -108,7 +108,7 @@ export default {
 }
 .modal-content {
   width: 619px;
-  height: 735px;
+  max-height: 100%;
   background-color: rgba(52, 32, 101, 0.174);
   backdrop-filter: blur(80px);
   padding: 48px;
@@ -118,6 +118,7 @@ export default {
   right: 0;
   transition: transform 0.7s ease;
   border-radius: 30px;
+  overflow-x: auto;
 }
 .close-button {
   position: absolute;
@@ -246,14 +247,10 @@ export default {
   border-radius: 50%;
 }
 @media (max-width: 1600px) {
-  .modal-overlay {
-    width: 100%;
-    height: 100%;
-    padding: 20px 15px;
-  }
   .modal-content {
+    top: 110px;
     width: 450px;
-    height: 530px;
+    max-height: 100%;
     padding: 30px;
   }
   .model-result {
@@ -272,7 +269,7 @@ export default {
   .items {
     gap: 30px;
   }
-  .item-info{
+  .item-info {
     width: 270px;
   }
   .modal-title {
@@ -282,7 +279,7 @@ export default {
     font-size: 17px;
     height: 23px;
   }
-  .item-content{
+  .item-content {
     margin-bottom: 12px;
   }
   .item-content_text {
@@ -305,11 +302,125 @@ export default {
   .imageUrl {
     width: 67px;
   }
-  .currency{
-   left: 100px;
+  .currency {
+    left: 100px;
   }
-  .item-quantity{
+  .item-quantity {
     width: 270px;
+  }
+}
+@media (max-width: 770px) {
+  .modal-content {
+    top: 100px;
+    right: -20px;
+    overflow-x: auto;
+    max-height: 100%;
+  }
+}
+@media (max-width: 430px) {
+  .modal-overlay {
+    width: 100%;
+    height: 100%;
+    padding: 20px 15px;
+  }
+  .modal-content {
+    top: 20px;
+    left: 80px;
+    width: 390px;
+    max-height: 100%;
+    top: 20px;
+    padding: 22px 15px 15px 18px;
+    border-radius: 20px;
+  }
+  .item {
+    height: 120px;
+    width: 330px;
+  }
+  .imageUrl {
+    width: 67px;
+  }
+  .modal-title {
+    font-size: 15px;
+    margin-bottom: 50px;
+  }
+  .item-title {
+    font-size: 15px;
+  }
+  .border-line {
+    width: 220px;
+  }
+  .modal-title {
+    margin-bottom: 42px;
+  }
+  .item-content_text {
+    font-size: 13px;
+  }
+  .trash-lime {
+    width: 30px;
+    height: 33px;
+  }
+  .item-content {
+    width: 224px;
+    height: 53px;
+    margin-bottom: 0;
+  }
+  .item-quantity-result {
+    font-size: 25px;
+    margin-top: 16px;
+    letter-spacing: 1px;
+  }
+  .currency {
+    font-size: 13px;
+    left: 80px;
+  }
+  .circle-heart {
+    width: 50px;
+    height: 50px;
+  }
+  .heart-image {
+    width: 22px;
+    height: 20px;
+  }
+  .item-quantity {
+    width: 220px;
+  }
+  .minus-btn {
+    width: 45px;
+    height: 45px;
+    border: 1px solid rgba(255, 255, 255, 1);
+  }
+  .plus-btn {
+    width: 45px;
+    height: 45px;
+    border: 1px solid rgba(255, 255, 255, 1);
+  }
+  .amount-text {
+    text-transform: capitalize;
+    font-size: 13px;
+  }
+  .amount-result {
+    font-size: 30px;
+    margin-top: 4px;
+    letter-spacing: 1px;
+  }
+  .currency-line {
+    font-size: 20px;
+    left: 110px;
+  }
+  .btn {
+    margin-top: -5px;
+  }
+  .btn-text {
+    font-size: 16px;
+    right: 30px;
+    top: 20px;
+  }
+  .item-quantity {
+    width: 224px;
+  }
+  .item-button {
+    justify-content: right;
+    height: 45px;
   }
 }
 @media (max-width: 400px) {
@@ -320,12 +431,11 @@ export default {
   }
   .modal-content {
     top: 20px;
-    left: 80px;
+    left: 70px;
     width: 360px;
-    height: 562px;
+    max-height: 100%;
     padding: 22px 15px 15px 18px;
     border-radius: 20px;
-    overflow: hidden;
   }
   .item {
     height: 121px;
@@ -355,11 +465,11 @@ export default {
   }
   .item-quantity-result {
     font-size: 25px;
-    margin-top: 29px;
+    margin-top: 14px;
   }
   .currency {
     font-size: 13px;
-    left: 205px;
+    left: 78px;
   }
   .circle-heart {
     width: 50px;
@@ -371,6 +481,83 @@ export default {
   }
   .item-quantity {
     width: 220px;
+  }
+}
+@media (max-width: 321px) {
+  .modal-content {
+    top: 20px;
+    left: 70px;
+    width: 300px;
+    max-height: 100%;
+    top: 20px;
+    padding: 22px 15px 15px 18px;
+    border-radius: 20px;
+  }
+  .item {
+    height: 120px;
+    width: 280px;
+  }
+  .imageUrl {
+    width: 67px;
+  }
+  .modal-title {
+    font-size: 15px;
+    margin-bottom: 50px;
+  }
+  .item-title {
+    font-size: 15px;
+  }
+  .border-line {
+    width: 160px;
+  }
+  .modal-title {
+    margin-bottom: 42px;
+  }
+  .item-content_text {
+    font-size: 13px;
+  }
+  .trash-lime {
+    width: 30px;
+    height: 33px;
+  }
+  .item-content {
+    width: 160px;
+    height: 53px;
+    margin-bottom: 0;
+  }
+  .item-quantity-result {
+    font-size: 20px;
+    margin-top: 5px;
+    letter-spacing: 0;
+  }
+  .currency {
+    font-size: 13px;
+    left: 60px;
+  }
+  .circle-heart {
+    width: 50px;
+    height: 50px;
+  }
+  .heart-image {
+    width: 22px;
+    height: 20px;
+  }
+  .item-quantity {
+    width: 160px;
+  }
+  .circle-heart {
+    width: 30px;
+    height: 30px;
+  }
+  .heart-image {
+    width: 12px;
+    height: 12px;
+  }
+  .item-title_lamp {
+    gap: 5px;
+  }
+  .item-title {
+    font-size: 14px;
   }
 }
 </style>

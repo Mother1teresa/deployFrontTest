@@ -89,17 +89,18 @@ export default {
   height: 100%;
   padding: 60px;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   backdrop-filter: blur(80px);
   background-color: rgba(51, 32, 101, 0.25);
 }
 .modal-content {
   width: 100%;
-  height: 100%;
+  max-height: 100%; 
   position: static;
   right: 0;
   transition: transform 0.7s ease;
   border-radius: 30px;
+  overflow-x: auto; 
 }
 .close-button {
   position: absolute;
@@ -319,6 +320,11 @@ export default {
 .open-icon {
   display: none;
 }
+@media (max-width: 1660px) {
+  .column-tel{
+    display: none;
+  }
+}
 @media (max-width: 1200px){
   .delet {
     display: none;
@@ -327,7 +333,25 @@ export default {
     display: grid;
   }
 }
+@media (max-width:770px) {
+  .column-city{
+    font-size: 28px;
+  }
+  .column-street{
+    font-size: 15px;
+    width: 100px;
+  }
+}
 @media (max-width: 430px) {
+  .modal-content {
+  width: 100%;
+  max-height: 100%; 
+  position: static;
+  right: 0;
+  transition: transform 0.7s ease;
+  border-radius: 30px;
+  overflow-x: auto; 
+}
   .modal-overlay {
     max-width: 100%;
     max-height: 100%;
@@ -340,7 +364,6 @@ export default {
   }
   .modal-content {
     width: 100%;
-    overflow: hidden;
   }
   .close-button {
     font-size: 40px;
@@ -384,6 +407,13 @@ export default {
   }
   .open-icon{
     display: grid;
+  }
+  .column-city{
+    font-size: 30px;
+  }
+  .column-street{
+    font-size: 15px;
+    width: 150px;
   }
 }
 </style>

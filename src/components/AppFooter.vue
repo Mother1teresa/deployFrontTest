@@ -58,6 +58,7 @@ export default {};
   border: 2px solid rgba(217, 255, 90, 1);
   border-radius: 50%;
   transform: rotate(-15deg);
+  margin-left: 50px;
 }
 .btn-text {
   display: grid;
