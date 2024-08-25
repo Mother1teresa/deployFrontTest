@@ -326,7 +326,7 @@ export default {
   .modal-content {
     top: 110px;
     width: 450px;
-    max-height: 100%;
+    max-height: 500px;
     padding: 30px;
   }
   .item {
@@ -435,7 +435,7 @@ export default {
     top: 20px;
     left: 80px;
     width: 390px;
-    max-height: 708px;
+    max-height: 100%;
     top: 20px;
     padding: 22px 15px 15px 18px;
     border-radius: 20px;

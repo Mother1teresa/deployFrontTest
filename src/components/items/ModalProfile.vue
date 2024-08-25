@@ -461,7 +461,7 @@ export default {
     width: 270px;
   }
   .model-block {
-    margin-bottom: 12px;
+    margin-bottom: 0;
   }
 }
 @media (max-width: 770px) {
