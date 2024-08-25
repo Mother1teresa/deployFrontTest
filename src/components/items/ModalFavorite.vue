@@ -250,7 +250,7 @@ export default {
   .modal-content {
     top: 110px;
     width: 450px;
-    max-height: 100%;
+    max-height: 735px;
     padding: 30px;
   }
   .model-result {

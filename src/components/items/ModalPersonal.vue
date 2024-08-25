@@ -45,7 +45,6 @@ export default {
     margin-right: 0;
   }
 }
-
 @media (max-width: 430px) {
   .personal {
     gap: 18px;

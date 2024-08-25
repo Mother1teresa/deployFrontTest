@@ -402,7 +402,7 @@ export default {
   .modal-content {
     top: 110px;
     width: 450px;
-    max-height: 100%;
+    max-height: 516px;
     padding: 30px;
   }
   .model-result {
@@ -462,6 +462,14 @@ export default {
   }
   .model-block {
     margin-bottom: 0;
+    margin-top: 20px;
+  }
+  
+}
+@media (max-width: 1023px) {
+  .model-block {
+    margin-bottom: 0;
+    margin-top: 18px;
   }
 }
 @media (max-width: 770px) {
@@ -473,6 +481,10 @@ export default {
   }
   .model-block {
     margin-bottom: 12px;
+  }
+  .model-block {
+    margin-bottom: 0;
+    margin-top: 20px;
   }
 }
 @media (max-width: 430px) {
