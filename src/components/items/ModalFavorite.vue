@@ -246,12 +246,77 @@ export default {
   border: 3px solid rgba(255, 255, 255, 1);
   border-radius: 50%;
 }
+@media (max-width: 1900px) {
+  .modal-content {
+    top: 110px;
+    width: 450px;
+    max-height: 100%;
+    padding: 30px;
+    overflow-x: auto;
+  }
+  .model-result {
+    margin-top: 38px;
+  }
+  .close-button {
+    font-size: 34px;
+  }
+  .item {
+    width: 380px;
+    height: 120px;
+    padding: 6px;
+    display: flex;
+    gap: 31px;
+  }
+  .items {
+    gap: 30px;
+  }
+  .item-info {
+    width: 270px;
+  }
+  .modal-title {
+    margin-bottom: 20px;
+  }
+  .item-title {
+    font-size: 17px;
+    height: 23px;
+  }
+  .item-content {
+    margin-bottom: 12px;
+  }
+  .item-content_text {
+    margin: 0;
+    height: 25px;
+    font-size: 16px;
+  }
+  .item-quantity-result {
+    font-size: 25px;
+    margin-top: 10px;
+  }
+  .border-line {
+    border: 1px solid rgba(217, 255, 90, 1);
+    width: 270px;
+  }
+  .circle-heart {
+    width: 50px;
+    height: 50px;
+  }
+  .imageUrl {
+    width: 67px;
+  }
+  .currency {
+    left: 100px;
+  }
+  .item-quantity {
+    width: 270px;
+  }
+}
 @media (max-width: 1600px) {
   .modal-content {
     top: 110px;
     width: 450px;
-    max-height: 735px;
+    max-height: 100%;
     padding: 30px;
+    overflow-x: auto;
   }
   .model-result {
     margin-top: 38px;

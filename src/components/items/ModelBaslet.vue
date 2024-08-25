@@ -322,6 +322,103 @@ export default {
 .btn:active{
   border: 2px solid white;
 }
+@media (max-width: 1900px){
+
+  .modal-content {
+    top: 110px;
+    width: 450px;
+    max-height: 550px;
+    padding: 30px;
+  }
+  .item {
+    width: 100%;
+  }
+  .amount-result {
+    font-size: 37px;
+  }
+  .model-result {
+    margin-top: 38px;
+  }
+  .btn {
+    margin-top: 15px;
+    width: 140px;
+    height: 70px;
+  }
+  .btn-text {
+    font-size: 18px;
+    right: 22px;
+    top: 21px;
+  }
+  .close-button {
+    font-size: 34px;
+  }
+  .item {
+    width: 370px;
+    height: 80px;
+    padding: 6px;
+    display: flex;
+    gap: 31px;
+  }
+  .items {
+    gap: 30px;
+  }
+  .modal-title {
+    margin-bottom: 20px;
+  }
+  .item-content {
+    width: 310px;
+    height: 53px;
+  }
+  .item-title {
+    font-size: 17px;
+    height: 23px;
+  }
+  .item-content_text {
+    margin: 0;
+    height: 25px;
+    font-size: 16px;
+  }
+  .minus-btn,
+  .plus-btn {
+    width: 30px;
+    height: 30px;
+  }
+  .item-quantity {
+    width: 310px;
+  }
+  .item-quantity-result {
+    font-size: 25px;
+    margin-top: 10px;
+  }
+  .item-button {
+    justify-content: right;
+    height: 30px;
+  }
+  .border-line {
+    border: 1px solid rgba(217, 255, 90, 1);
+  }
+  .trash-lime {
+    width: 20px;
+  }
+  .personal {
+    gap: 6px;
+    margin-right: 10px;
+  }
+  .border-line {
+    width: 310px;
+  }
+  .currency {
+    left: 207px;
+    font-size: 13px;
+  }
+  .currency-line {
+    left: 150px;
+  }
+  .imageUrl {
+    width: 42px;
+  }
+
+}
 @media (max-width: 1600px) {
   .modal-content {
     top: 110px;
