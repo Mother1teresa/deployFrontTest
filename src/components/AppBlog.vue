@@ -103,6 +103,7 @@ export default {
         },
       ],
       slidesToShow: 1,
+      swiper: null,
     };
   },
   computed: {
@@ -117,19 +118,22 @@ export default {
   methods: {
     checkScreenWidth() {
       const screenWidth = window.innerWidth;
-      if (screenWidth >= 2560) {
+       if (screenWidth >= 2305) {
         this.slidesToShow = 4;
-      } else if (screenWidth >= 2305) {
+      } else if (screenWidth >= 1865) {
         this.slidesToShow = 3;
-      } else if (screenWidth >= 1877) {
-        this.slidesToShow = 2;
-      } else if (screenWidth >= 1441) {
+       } else if (screenWidth >= 1820) {
+        this.slidesToShow = 3;
+      } else if (screenWidth >= 1240) {
         this.slidesToShow = 2;
       } else if (screenWidth <= 1024) {
         this.slidesToShow = 1;
       }
     },
     onSlideChange(swiper) {
+      this.swiper = swiper;
+    },
+    onSwiper(swiper) {
       this.swiper = swiper;
     },
   },
@@ -273,19 +277,121 @@ export default {
   text-align: center;
   height: 20px;
 }
-/* @media (max-width: 1450px) {
-  .container-fluid {
-    overflow: hidden;
+
+ @media (max-width: 1024px) {
+  
+  .post-shape {
+    width: 760px;
+    height: 400px;
   }
-} */
-@media (max-width: 1030px) {
-  .container-fluid {
-    padding: 0 50px 0 50px;
+  .blog-content{
+    height: 450px;
+  }
+  .box-content {
+    width: 755px;
+    height: 400px;
   }
   .post {
-    width: 580px;
-    height: 376px;
-    position: relative;
+    width: 420px;
+    height: 450px;
+  }
+  .post-image {
+    width: 340px;
+    height: 375px;
+  }
+  .box-text {
+    width: 370px;
+    height: 400px;
+    padding: 30px;
+  }
+  .post-author {
+    width: 310px;
+  }
+  .author-name{
+    font-size: 16px;
+    line-height: 20px;
+  }
+  .post-title{
+    font-size: 37px;
+    width: 310px;
+    line-height: 37px;
+    height: 180px;
+    display: grid;
+    align-items: center;
+  }
+  .post-data{
+    width: 100px;
+    line-height: 20px;
+    height: 80px;
+  }
+  .post-time {
+    width: 127px;
+    height: 100px;
+    bottom: 10px;
+    left: 165px;
+    font-size: 23px;
+  }
+  .time {
+    font-size: 40px;
+    height: 30px;
+    font-weight: 400;
+  }
+} 
+@media (max-width: 768px) {
+  .container-fluid{
+    margin-top: 120px;
+  }
+  .post-shape {
+    width: 620px;
+    height: 394px;
+  }
+  .blog-content{
+    height: 470px;
+  }
+  .box-content {
+    width: 615px;
+    height: 440px;
+  }
+  .post {
+    width: 668px;
+    height: 440px;
+  }
+  .post-image {
+    width: 274px;
+    height: 365px;
+  }
+  .box-text {
+    width: 346px;
+    height: 405px;
+    padding: 30px;
+  }
+  .post-author {
+    width: 275px;
+    width: 100%;
+  }
+  .author-name{
+    font-size: 20px;
+  }
+  .post-title{
+    font-size: 33px;
+    width: 100%;
+    line-height: 43px;
+  }
+  .post-data{
+    width: 100px;
+    line-height: 20px;
+  }
+  .post-time {
+    width: 100px;
+    height: 90px;
+    bottom: 10px;
+    left: 143px;
+    font-size: 20px;
+  }
+  .time {
+    font-size: 36px;
+    height: 30px;
+    font-weight: 400;
   }
 }
 @media (max-width: 430px) {
@@ -329,7 +435,7 @@ export default {
     margin-top: 0;
   }
   .box-text {
-    width: 360px;
+    width: 100%;
     height: 243px;
     padding: 15px;
   }
@@ -341,11 +447,15 @@ export default {
   }
   .post-data {
     font-size: 12px;
+    width: 60px;
+    height: 55px;
+    line-height: 15px;
   }
   .post-title {
-    font-size: 15px;
-    width: 115px;
-    line-height: 19px;
+    font-size: 20px;
+    width: 120px;
+    height: 80px;
+    line-height: 25px;
   }
   .box-content {
     width: 360px;
@@ -379,7 +489,7 @@ export default {
     width: 100%;
   }
 }
-@media (max-width: 321px) {
+@media (max-width: 320px) {
   .container-fluid {
     padding: 0 8px 0 8px;
     margin-top: 100px;
@@ -437,11 +547,12 @@ export default {
   .post-data {
     font-size: 10px;
     width: 60px;
+    height: 40px;
   }
   .post-title {
-    font-size: 13px;
+    font-size: 16px;
     width: 115px;
-    height: 60px;
+    height: 80px;
     line-height: 19px;
   }
   .box-content {
@@ -449,8 +560,9 @@ export default {
     height: 223px;
   }
   .author-name {
-    font-size: 13px;
+    font-size: 10px;
     width: 56px;
+    line-height: 13px;
   }
   .post-time {
     width: 50px;

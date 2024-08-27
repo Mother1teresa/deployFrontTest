@@ -13,11 +13,9 @@
               <img
                 src="/src/assets/image/catalog.png"
                 class="icon catalog"
-                alt=""
-              />
-              Каталог</span
-            ></a
-          >
+                alt=""/>
+              Каталог</span>
+            </a>
         </li>
       </div>
       <div class="nav-interesting">
@@ -36,9 +34,8 @@
                 <img
                   src="/src/assets/image/search.png"
                   class="icon search-image"
-                  alt=""
-                />Поиск</span
-              >
+                  alt=""/>
+                Поиск</span>
             </a>
           </li>
         </div>

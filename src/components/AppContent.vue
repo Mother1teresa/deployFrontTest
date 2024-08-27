@@ -72,38 +72,41 @@
         <button class="close-button" @click="closeModal">
           <span class="close">закрыть</span>✕
         </button>
-        <div class="modal-main">
-          <div class="modal-info">
-            <div class="info-left">
-              <div class="article">Арт. GNM007</div>
-              <div class="info-color">
-                <div class="info-text">цвет:</div>
-                <div
-                  class="color"
-                  :style="{ 'background-color': blocks[isActive].color }"
-                ></div>
-                <div class="name-color">{{ blocks[isActive].nameColor }}</div>
-              </div>
-            </div>
-            <div class="info-rigth">
-              <img
-                class="info-favorite"
-                src="/src/assets/image/info-favorite.png"
-                alt=""
-              />
-
-              <div class="info-size">
-                Высота: <span class="info-cm">60см</span>
-              </div>
+        <!-- <div class="modal-main"> -->
+        <div class="modal-info">
+          <div class="info-left">
+            <div class="article">Арт. GNM007</div>
+            <div class="info-color">
+              <div class="info-text">цвет:</div>
+              <div
+                class="color"
+                :style="{ 'background-color': blocks[isActive].color }"
+              ></div>
+              <div class="name-color">{{ blocks[isActive].nameColor }}</div>
             </div>
           </div>
+          <div class="info-rigth">
+            <img
+              class="info-favorite"
+              src="/src/assets/image/info-favorite.png"
+              alt=""
+            />
+
+            <div class="info-size">
+              Высота: <span class="info-cm">60см</span>
+            </div>
+          </div>
+        </div>
+        <div class="modal-box">
           <div
             class="modal-active"
             :style="{ color: blocks[isActive].textFonColor }"
           >
             {{ blocks[isActive].textFon }}
           </div>
-          <img :src="blocks[isActive].imageOpen" class="modal-image" />
+          <div class="modal-image-container">
+            <img :src="blocks[isActive].imageOpen" class="modal-image" />
+          </div>
           <div class="body-content">
             <div class="body-content_text">
               {{ blocks[isActive].content }}
@@ -129,24 +132,27 @@
         <button class="close-button" @click="closeModal">
           <span class="close">закрыть</span>✕
         </button>
+
         <div class="info">
           <div class="info-top">
             <div class="article">Арт. GNM 007</div>
             <img
               class="info-favorite"
               src="/src/assets/image/info-favorite.png"
-              alt=""
-            />
+              alt="" />
           </div>
+
+          
 
           <div
             class="modal-active"
-            :style="{ color: blocks[isActive].textFonColor }"
-          >
+            :style="{ color: blocks[isActive].textFonColor }">
             {{ blocks[isActive].textFon }}
           </div>
+          <div class="modal-image-container">
+            <img :src="blocks[isActive].imageOpen" class="modal-image" />
+          </div>
 
-          <img :src="blocks[isActive].imageOpen" class="modal-image" />
           <div class="info-bottom">
             <div class="info-size">
               Высота: <span class="info-cm">60см</span>
@@ -159,6 +165,8 @@
               <div class="name-color">{{ blocks[isActive].nameColor }}</div>
             </div>
           </div>
+
+
           <div class="info-content">
             <div class="info-title">
               {{ blocks[isActive].openLabel }}
@@ -428,14 +436,14 @@ export default {
   text-transform: uppercase;
   opacity: 0.6;
 }
-.modal-image {
+/* .modal-image {
   display: grid;
   justify-content: center;
   position: absolute;
   top: 150px;
   height: 666px;
   width: 400px;
-}
+} */
 .color {
   display: grid;
   align-content: center;
@@ -484,12 +492,24 @@ export default {
   font-family: "Euclid Circular A", sans-serif;
   text-transform: uppercase;
 }
-@media (max-width: 1900px) {
+
+.modal-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0; /* Отступы сверху и снизу для изображения */
+}
+.modal-image {
+  max-width: 100%;
+  height: auto;
+}
+
+/* @media (max-width: 1900px) {
   .modal-active {
     font-size: 250px;
   }
-}
-@media (max-width: 1400px) {
+} */
+/* @media (max-width: 1400px) {
   .modal-active {
     font-size: 180px;
     display: grid;
@@ -523,17 +543,9 @@ export default {
     border-radius: 50%;
     transform: rotate(-10deg);
   }
-}
-/* @media (max-width: 1200px) {
-  .modal-content {
-    padding: 30px;
-  }
-  .modal-image {
-    top: 91px;
-    left: 400px;
-  }
 } */
-@media (max-width: 430px) {
+
+/* @media (max-width: 430px) {
   .modal-content {
     display: none;
   }
@@ -635,7 +647,7 @@ export default {
   .btn-text-active {
     font-size: 16px !important;
   }
-}
+} */
 
 .content-mian {
   display: flex;
@@ -830,7 +842,7 @@ export default {
   border-radius: 50%;
   transform: rotate(-10deg);
 }
-@media (max-width: 1640px){
+@media (max-width: 1640px) {
   .content-mian {
     padding: 0 8px 0 15px;
     height: 655px !important;
@@ -840,7 +852,7 @@ export default {
     height: 100% !important;
     border-radius: 30px;
   }
-  
+
   .block-image {
     width: 156px !important;
     height: 250px !important;
@@ -935,13 +947,12 @@ export default {
   .block-label {
     font-size: 12px;
   }
-  .block-num{
+  .block-num {
     font-size: 30px;
     margin-top: 20px;
   }
- 
 }
-@media (max-width: 1024px){
+@media (max-width: 1024px) {
   .content-mian {
     padding: 0 8px 0 15px;
     height: 655px !important;
@@ -951,7 +962,7 @@ export default {
     height: 100% !important;
     border-radius: 15px;
   }
-  
+
   .block-image {
     width: 156px !important;
     height: 250px !important;
@@ -1034,7 +1045,7 @@ export default {
     display: grid;
     justify-content: space-around;
     width: 100%;
-   margin-bottom: 10px;
+    margin-bottom: 10px;
   }
   .block-label-open {
     font-size: 18px;
@@ -1046,7 +1057,7 @@ export default {
   .block-label {
     font-size: 12px;
   }
-  .block-num{
+  .block-num {
     font-size: 30px;
     margin-top: 20px;
   }
@@ -1061,7 +1072,7 @@ export default {
     height: 555px !important;
     border-radius: 15px;
   }
-  
+
   .block-image {
     width: 156px !important;
     height: 250px !important;
@@ -1155,7 +1166,7 @@ export default {
   .block-label {
     font-size: 12px;
   }
-  .block-num{
+  .block-num {
     font-size: 30px;
     margin-top: 20px;
   }
@@ -1235,7 +1246,7 @@ export default {
     display: grid;
     align-items: end;
   }
-  .block-box{
+  .block-box {
     margin-bottom: 0;
     margin-left: 0;
     display: grid;
@@ -1280,7 +1291,7 @@ export default {
     height: 655px !important;
     border-radius: 0;
   }
-  .block-box{
+  .block-box {
     width: 200px;
   }
   .block-position {
@@ -1320,10 +1331,10 @@ export default {
     width: 100%;
   }
   .modal-image {
-    top: 90px;
-    left: 1170px;
+    margin-top: -600px;
     width: 450px;
     height: 550px;
+    z-index: 1;
   }
   .info-text {
     display: grid;
@@ -1341,24 +1352,25 @@ export default {
     justify-content: space-around;
   }
   .btn-active {
-    width: 357px !important;
-    height: 150px !important;
+    width: 357px;
+    height: 150px;
   }
   .btn-union-active {
-    width: 357px !important;
-    height: 150px !important;
-    top: -1px !important;
-    transform: rotate(-11deg) !important;
+    width: 357px;
+    height: 150px;
+    top: -1px;
+    transform: rotate(-11deg);
   }
   .btn-text-active {
-    font-size: 16px !important;
+    font-size: 20px !important;
   }
   .modal-active {
-    margin-top: -10px;
+    margin-top: -300px;
     margin-bottom: 40px;
     font-size: 80px !important;
     width: 100% !important;
     height: 100% !important;
+    z-index: -3;
   }
   .modal-price {
     margin-top: 20px;
@@ -1380,8 +1392,8 @@ export default {
   }
   .body-content_text {
     line-height: 30px;
-    height: 100px;
-    width: 470px;
+    height: 150px;
+    width: 390px;
     font-size: 25px;
   }
   .modal-title {
@@ -1427,8 +1439,6 @@ export default {
     width: 100%;
   }
   .modal-image {
-    top: 150px;
-    left: 870px;
     width: 380px;
     height: 480px;
   }
@@ -1448,24 +1458,17 @@ export default {
     justify-content: space-around;
   }
   .btn-active {
-    width: 257px !important;
-    height: 100px !important;
+    width: 337px;
+    height: 130px;
   }
   .btn-union-active {
-    width: 257px !important;
-    height: 100px !important;
-    top: -1px !important;
-    transform: rotate(-11deg) !important;
+    width: 337px;
+    height: 130px;
+    top: -1px;
+    transform: rotate(-11deg);
   }
   .btn-text-active {
     font-size: 16px !important;
-  }
-  .modal-active {
-    margin-top: -10px;
-    margin-bottom: 40px;
-    font-size: 80px !important;
-    width: 100% !important;
-    height: 100% !important;
   }
   .modal-price {
     margin-top: 20px;
@@ -1487,26 +1490,26 @@ export default {
   }
   .body-content_text {
     line-height: 30px;
-    height: 100px;
-    width: 470px;
-    font-size: 25px;
+    height: 80px;
+    width: 380px;
+    font-size: 22px;
   }
-
   .modal-title {
-    font-size: 67px;
-    margin-bottom: 10px;
+    font-size: 100px;
+    margin-bottom: 20px;
+    /* margin-left: -40px; */
     display: grid;
     justify-content: center;
   }
   .modal-price {
     margin-top: 0px;
-    font-size: 25px;
+    font-size: 37px;
     display: grid;
     justify-content: center;
   }
   .currency-active {
     font-size: 12px;
-    left: 70px;
+    left: 100px;
   }
   .info-rigth {
     width: 80px;
@@ -1529,23 +1532,65 @@ export default {
     height: 50px;
   }
 }
-@media (max-width: 1640px){
+@media (max-width: 1640px) {
   .modal-image {
-    position: absolute;
-    top: 80px;
-    left: 640px;
-    width: 330px;
-    height: 434px;
+    width: 260px;
+    height: 360px;
+    margin-top: -330px;
   }
-  .modal-price{
+  .modal-price {
     height: 50px;
   }
- .body-content_image{
-  margin-left: -100px;
- }
- .modal-active{
-  height: 300px !important;
- }
+  .modal-info {
+    z-index: 2;
+  }
+  .modal-title {
+    font-size: 80px;
+    margin-bottom: 20px;
+    width: 320px;
+  }
+  .modal-active {
+    font-size: 230px !important;
+    margin-top: -150px;
+    margin-bottom: 10px;
+    height: 210px !important;
+    z-index: -2;
+  }
+  .modal-image-container {
+    margin: 0;
+  }
+  .btn-active {
+    width: 300px;
+    height: 120px;
+  }
+  .btn-union-active {
+    width: 300px;
+    height: 120px;
+    top: -1px;
+    transform: rotate(-11deg);
+  }
+  .body-content_text {
+    line-height: 20px;
+    height: 70px;
+    width: 330px;
+    font-size: 18px;
+  }
+  .modal-title {
+    font-size: 60px;
+    margin-bottom: 20px;
+    display: grid;
+    justify-content: center;
+    height: 60px;
+  }
+  .modal-price {
+    margin-top: 0px;
+    font-size: 37px;
+    display: grid;
+    justify-content: center;
+  }
+  .body-content {
+    margin-top: 10px;
+  }
 }
 @media (max-width: 1440px) {
   .content-mian {
@@ -1553,11 +1598,9 @@ export default {
     width: 100%;
   }
   .modal-image {
-    position: absolute;
-    top: 60px;
-    left: 640px;
     width: 260px;
     height: 334px;
+    margin-top: -170px;
   }
   .info-title {
     margin-top: 20px;
@@ -1572,17 +1615,17 @@ export default {
     justify-content: space-around;
   }
   .btn-active {
-    width: 257px !important;
-    height: 80px !important;
+    width: 280px !important;
+    height: 100px !important;
   }
   .btn-union-active {
-    width: 257px !important;
-    height: 80px !important;
+    width: 280px !important;
+    height: 100px !important;
     top: -1px !important;
     transform: rotate(-8deg) !important;
   }
   .btn-text-active {
-    font-size: 12px !important;
+    font-size: 18px !important;
   }
   .modal-active {
     margin-top: -10px;
@@ -1605,7 +1648,7 @@ export default {
   .info-top {
     margin-bottom: 55px;
   }
-  .body-content{
+  .body-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -1615,7 +1658,7 @@ export default {
     right: 20px;
   }
   .body-content_text {
-    line-height: 20px;
+    line-height: 18px;
     height: 100px;
     font-size: 17px;
     width: 300px;
@@ -1624,10 +1667,9 @@ export default {
     font-size: 60px;
     height: 50px;
     margin-bottom: 20px;
-    
   }
-  .body-content_image{
-    margin-left: 50px;
+  .body-content_image {
+    margin-left: 0px;
   }
   .modal-price {
     margin-top: 0px;
@@ -1652,7 +1694,7 @@ export default {
     flex-wrap: wrap;
   }
   .modal-active {
-    font-size: 220px !important;
+    font-size: 170px !important;
     margin-top: -210px;
     margin-bottom: 10px;
   }
@@ -1662,19 +1704,14 @@ export default {
   }
 }
 @media (max-width: 1030px) {
-  .model-nigth {
-    margin-top: 120px;
-  }
   .content-mian {
-    padding: 0 8px 0 8px;
+    padding: 0 8px 0 8px !important;
     width: 100%;
   }
   .modal-image {
-    position: absolute;
-    top: 100px;
-    left: 420px;
     width: 250px;
     height: 324px;
+    margin-top: -360px;
   }
   .info-title {
     margin-top: 20px;
@@ -1690,19 +1727,18 @@ export default {
   }
   .btn-active {
     margin-top: 0px !important;
-    width: 157px !important;
-    height: 60px !important;
+    width: 227px !important;
+    height: 100px !important;
   }
   .btn-union-active {
-    width: 157px !important;
-    height: 60px !important;
+    width: 227px !important;
+    height: 100px !important;
     top: -1px !important;
-    transform: rotate(-11deg) !important;
+    transform: rotate(-10deg) !important;
   }
   .btn-text-active {
-    font-size: 12px !important;
+    font-size: 18px !important;
   }
-
   .modal-price {
     margin-top: 20px;
     margin-left: -25px;
@@ -1723,16 +1759,17 @@ export default {
   }
   .body-content_text {
     line-height: 20px;
-    height: 100px;
+    height: 90px;
     font-size: 17px;
-    width: 260px;
+    width: 240px;
   }
-  .body-content_image{
+  .body-content_image {
     margin-left: 0;
   }
   .modal-title {
-    font-size: 60px;
-    height: 50px;
+    font-size: 40px;
+    height: 40px;
+    width: 200px;
     margin-bottom: 20px;
   }
   .modal-price {
@@ -1754,11 +1791,12 @@ export default {
   }
   .info-color {
     width: 60px;
+    margin-top: 30px;
     gap: 5px;
     flex-wrap: wrap;
   }
   .modal-active {
-    font-size: 160px !important;
+    font-size: 120px !important;
     margin-top: -70px;
     margin-bottom: 20px;
     width: 100% !important;
@@ -1769,17 +1807,8 @@ export default {
     height: 50px;
   }
 }
-@media (max-width: 800px) {
-  .model-nigth {
-    padding: 0 8px 0 8px;
-    width: 100%;
-    height: 100%;
-    margin-top: 120px;
-  }
+@media (max-width: 786px) {
   .modal-image {
-    position: absolute;
-    top: 90px;
-    left: 300px;
     width: 220px;
     height: 304px;
   }
@@ -1798,11 +1827,11 @@ export default {
   .btn-active {
     margin-left: 15px;
     width: 180px !important;
-    height: 80px !important;
+    height: 60px !important;
   }
   .btn-union-active {
     width: 180px !important;
-    height: 80px !important;
+    height: 60px !important;
     top: -1px !important;
     transform: rotate(-11deg) !important;
   }
@@ -1815,15 +1844,10 @@ export default {
     font-size: 80px !important;
     width: 100% !important;
     height: 100% !important;
-
   }
   .modal-price {
     margin-top: 20px;
     margin-left: -25px;
-  }
-  .modal-info {
-    width: 100%;
-    margin-top: 20px;
   }
   .info-bottom {
     margin-top: 50px;
@@ -1836,17 +1860,19 @@ export default {
     right: 20px;
   }
   .body-content_text {
-    line-height: 20px;
-    height: 100px;
+    line-height: 17px;
     font-size: 17px;
-    width: 260px;
+    width: 210px;
+  }
+  .body-content_image {
+    width: 200px;
   }
   .modal-title {
     font-size: 40px;
     height: 50px;
+    width: 160px;
     margin-bottom: 10px;
   }
-  
   .modal-price {
     margin-top: 0px;
   }
@@ -1859,30 +1885,46 @@ export default {
   .info-color {
     width: 60px;
     gap: 5px;
+    margin-top: 35px;
     flex-wrap: wrap;
   }
   .modal-active {
     font-size: 120px !important;
-    margin-top: -70px;
+    margin-top: -30px;
     margin-bottom: 20px;
     width: 100% !important;
     height: 100% !important;
   }
+  .info-favorite {
+    margin-bottom: 40px;
+  }
 }
 @media (max-width: 430px) {
+  .modal-content {
+    display: none;
+  }
+  .info-bottom {
+    margin-top: -50px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
   .model-nigth {
-    margin-top: 80px;
+    display: grid;
+    margin-top: 30px;
     padding: 0 8px 0 8px;
     width: 100%;
     height: auto;
   }
-
   .modal-image {
-    position: absolute;
-    top: 60px;
-    left: 100px;
+    margin-top: -250px;
     width: 220px;
     height: 304px;
+  }
+  .close{
+    font-size: 12px;
+    opacity: 0.5;
+    letter-spacing: 1px;
   }
   .info-title {
     margin-top: 20px;
@@ -1895,15 +1937,19 @@ export default {
   .modal-btn {
     display: flex;
     justify-content: space-around;
+    align-items: center;
+  }
+  .currency-active{
+    left: 80px;
   }
   .btn-active {
     margin-top: 12px;
-    width: 147px !important;
-    height: 60px !important;
+    width: 207px !important;
+    height: 90px !important;
   }
   .btn-union-active {
-    width: 147px !important;
-    height: 60px !important;
+    width: 207px !important;
+    height: 90px !important;
     top: -1px !important;
     transform: rotate(-11deg) !important;
   }
@@ -1911,20 +1957,17 @@ export default {
     font-size: 12px !important;
   }
   .modal-active {
-    margin-top: 50px;
+    margin-top: -80px;
+    display: grid;
+    justify-content: center;
     font-size: 70px !important;
     width: 100% !important;
-    height: 90px !important;
+    height: 130px !important;
   }
   .modal-price {
+    font-size: 30px;
     margin-top: 20px;
     margin-left: -25px;
-  }
-  .info-bottom {
-    margin-top: 50px;
-  }
-  .info-top {
-    margin-bottom: 55px;
   }
   .body-content_text {
     font-size: 16px;
@@ -1932,21 +1975,62 @@ export default {
     width: 100%;
     margin-top: 3px;
   }
+  .info-top{
+    margin-bottom: 90px;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .article{
+    width: 47px;
+    height: 39px;
+    line-height: 15px;
+  }
+  .info-favorite{
+    margin-bottom: 0;
+  }
+  .info-size{
+    font-size: 12px;
+    width: 56px;
+    line-height: 35px;
+  }
+  .info-cm{
+    margin-left: 0;
+  }
+  .info-left{
+    display: grid;
+    justify-items: right;
+    height: 50px;
+  }
+  .info-bottom{
+    display: flex;
+    align-items: center;
+  }
+  .info-title{
+    font-family: "Euclid Circular A", sans-serif;
+    font-size: 23px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 1);
+  }
+  .body-content_text{
+    width: 248px;
+    font-size: 13px;
+    line-height: 20px;
+  }
 }
-@media (max-width: 322px) {
+@media (max-width: 320px) {
   .modal-active {
     font-size: 50px !important;
     width: 300px !important;
     height: 70px !important;
   }
   .modal-image {
-    top: 60px;
-    left: 70px;
-    width: 180px;
-    height: 254px;
+    width: 140px;
+    height: 174px;
+    margin-top: -150px;
   }
   .model-nigth {
-    margin-top: 140px;
+    margin-top: 30px;
   }
   .modal-price {
     margin-top: 20px;
@@ -1955,8 +2039,26 @@ export default {
   .info-bottom {
     margin-top: 20px;
   }
+  .btn-active {
+    margin-top: 12px;
+    width: 127px !important;
+    height: 45px !important;
+  }
+  .btn-union-active {
+    width: 127px !important;
+    height: 45px !important;
+    top: -1px !important;
+    transform: rotate(-11deg) !important;
+  }
+  .btn-text-active {
+    font-size: 10px !important;
+  }
+  .union{
+    width: 10px;
+    height: 10px;
+  }
   .info-top {
-    margin-bottom: 50px;
+    margin-bottom: 150px;
   }
   .info-title {
     margin-top: 10px;

@@ -101,7 +101,12 @@ export default {
     height: 300px;
   }
 }
-@media (max-width: 400px) {
+@media (max-width: 768px){
+  .strip-container {
+    margin-top: 100px;
+  }
+}
+@media (max-width: 430px) {
   .strip-container {
     margin-top: 120px;
     height: 108px;

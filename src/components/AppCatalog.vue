@@ -2,45 +2,60 @@
   <div class="container-fluid" id="catalog">
     <div class="catalog-title">категории</div>
     <div class="items">
-      <div
-        class="item"
-        v-for="catalog in catalogs"
-        :key="catalog.id"
-        :class="{ active: activeCatalogId === catalog.id }"
+      <swiper
+        :slides-per-view="slidesToShow"
+        :space-between="30"
+        @slideChange="onSlideChange"
+        @swiper="onSwiper"
       >
-        <div class="item-subtract">
-          <img
-            class="image-subtarct"
-            src="/src/assets/image/Subtract.png"
-            alt=""
-          />
-          <div class="item-title">{{ catalog.title }}</div>
-          <div class="item-quantity">
-            <span class="quantity-numder">4</span>
-            <span class="quantity-text">шт</span>
-          </div>
-          <div class="item-btn">
-            <img class="image-mirror" :src="catalog.imageCatalog" alt="Image" />
-            <button
-              class="subtract-btn"
-              :class="{ active: activeCatalogId === catalog?.id }"
-              @click="setActiveCatalog(catalog?.id)"
-            >
-              <span
-                class="arrow-bottom"
-                :class="{ active: activeCatalogId === catalog?.id }"
-              >
+        <swiper-slide
+          class="swiper-slide"
+          v-for="catalog in catalogs"
+          :key="catalog.id"
+          :class="{ active: activeCatalogId === catalog.id }"
+        >
+          <div class="item">
+            <div class="item-subtract">
+              <img
+                class="image-subtarct"
+                src="/src/assets/image/Subtract.png"
+                alt=""
+              />
+              <div class="item-title">{{ catalog.title }}</div>
+              <div class="item-quantity">
+                <span class="quantity-numder">4</span>
+                <span class="quantity-text">шт</span>
+              </div>
+              <div class="item-btn">
                 <img
-                  :src="
-                    activeCatalogId === catalog.id ? activeArrow : inactiveArrow
-                  "
-                  alt="arrow"
+                  class="image-mirror"
+                  :src="catalog.imageCatalog"
+                  alt="Image"
                 />
-              </span>
-            </button>
+                <button
+                  class="subtract-btn"
+                  :class="{ active: activeCatalogId === catalog?.id }"
+                  @click="setActiveCatalog(catalog?.id)"
+                >
+                  <span
+                    class="arrow-bottom"
+                    :class="{ active: activeCatalogId === catalog?.id }"
+                  >
+                    <img
+                      :src="
+                        activeCatalogId === catalog.id
+                          ? activeArrow
+                          : inactiveArrow
+                      "
+                      alt="arrow"
+                    />
+                  </span>
+                </button>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
+        </swiper-slide>
+      </swiper>
     </div>
 
     <div class="active-catalog-wrapper" v-if="activeCatalogId !== null">
@@ -68,8 +83,8 @@
             <div class="image-main">
               <div
                 class="color"
-                :style="{ 'background-color': item.color }">
-            </div>
+                :style="{ 'background-color': item.color }"
+              ></div>
               <img
                 class="active-catalog-mirror"
                 :src="item.imageActive"
@@ -106,6 +121,9 @@
 </template>
 
 <script>
+import { Swiper, SwiperSlide } from "swiper/vue";
+import "swiper/swiper-bundle.css";
+
 import activeArrow from "/src/assets/image/arr.png";
 import inactiveArrow from "/src/assets/image/arr-lime.png";
 
@@ -134,6 +152,10 @@ import floorLamps from "/src/assets/image/floor-lamps.png";
 import armchair from "/src/assets/image/armchair2.png";
 import pedestal from "/src/assets/image/pedestal.png";
 export default {
+  components: {
+    Swiper,
+    SwiperSlide,
+  },
   data() {
     return {
       activeCatalogId: null,
@@ -307,6 +329,7 @@ export default {
           ],
         },
       ],
+      slidesToShow: 1,
       activeArrow,
       inactiveArrow,
     };
@@ -315,6 +338,33 @@ export default {
     setActiveCatalog(id) {
       this.activeCatalogId = this.activeCatalogId === id ? null : id;
     },
+    onSlideChange(swiper) {
+      console.log("Слайд изменился:", swiper.activeIndex);
+    },
+    onSwiper(swiper) {
+      this.swiper = swiper;
+    },
+    updateSlidesToShow() {
+      const width = window.innerWidth;
+      if (width >= 1000) {
+        this.slidesToShow = 4;
+      } else if (width >= 992) {
+        this.slidesToShow = 3;
+      } else if (width >= 768) {
+        this.slidesToShow = 2;
+      } else if (width >= 425) {
+        this.slidesToShow = 1;
+      } else {
+        this.slidesToShow = 1;
+      }
+    },
+  },
+  mounted() {
+    this.updateSlidesToShow();
+    window.addEventListener("resize", this.updateSlidesToShow);
+  },
+  beforeDestroy() {
+    window.removeEventListener("resize", this.updateSlidesToShow);
   },
 };
 </script>
@@ -439,19 +489,7 @@ export default {
   color: rgba(255, 255, 255, 1);
   white-space: nowrap;
 }
-.overlay-text {
-  position: absolute;
-  font-size: 24px;
-  color: white;
-  pointer-events: none;
-  transition: transform 0.1s ease-in-out, opacity 0.1s ease-in-out;
-}
-.text-animation {
-  width: 89.17px;
-  height: 196.03px;
-  opacity: 0;
-  transform: rotate(-1.4deg);
-}
+
 /* ActiveCatalog */
 .active-catalog-wrapper {
   height: 100%;
@@ -605,30 +643,127 @@ export default {
   justify-content: space-between;
   margin-top: 15px;
 }
-@media (max-width: 400px) {
+@media (max-width: 1600px) {
   .container-fluid {
-    padding: 0 14px 0 14px;
+    padding: 0 10px 0 25px;
     margin-top: 120px;
   }
-  .catalog-title {
+  .items {
+    gap: 40px;
+  }
+  .item {
+    width: 330px;
+    height: 417px;
+    position: relative;
+  }
+  .item-subtract {
+    width: 300px;
+    height: 417px;
+  }
+  .image-subtarct {
+    width: 300px;
+    height: 360px;
+  }
+  .image-mirror {
+    height: 200px;
+    width: 155px;
+    margin-top: 80px;
+  }
+  .subtract-btn {
+    border: 2px solid rgba(217, 255, 90, 1);
+    background: rgba(235, 227, 255, 0.19);
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+  }
+  .item-btn {
+    gap: 30px;
+  }
+  .item-quantity {
+    width: 71px;
+    height: 62px;
+    right: -3px;
+    top: 113px;
+  }
+  .item-title {
+    font-size: 25px;
+  }
+  .items-filter {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  .active-catalog-mirror {
+    width: 130px;
+    height: 190px;
+  }
+  .active-catalog_title {
+    font-size: 25px;
+  }
+  .active-catalog-content {
+    margin-top: 20px;
+    margin-bottom: 13px;
+    height: 70px;
+  }
+  .item-filter {
+    display: grid;
+    justify-content: center;
+    width: 260px;
+    height: 315px;
+    margin-bottom: 30px;
+  }
+  .border-line {
+    border: 1px solid rgba(217, 255, 90, 1);
+    width: 200px;
+    height: 2px;
+    background: rgba(217, 255, 90, 1);
+  }
+  .btn-union {
+    height: 30px;
+  }
+  .union-text {
+    font-size: 17px;
+    margin-top: 10px;
+  }
+  .union {
+    width: 18px;
+    height: 20px;
+  }
+  .amount {
+    margin-top: 10px;
+  }
+  .amount-result {
     font-size: 23px;
-    justify-content: left;
+  }
+  .currency-line {
+    font-size: 13px;
+    top: 0;
+    left: 80px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .catalog-title {
+    font-size: 34px;
   }
   .items {
     margin-top: 35px;
     margin-bottom: 0;
+    gap: 24px;
   }
   .image-subtarct {
-    width: 216px;
+    width: 200px;
     height: 256px;
   }
   .item {
-    width: 238px;
+    width: 208px;
     height: 288px;
   }
   .item-subtract {
-    overflow: hidden;
     width: 100%;
+    height: 288px;
     justify-items: left;
   }
   .item-title {
@@ -637,13 +772,12 @@ export default {
     height: 39px;
   }
   .image-mirror {
-    margin-top: 0;
+    margin-top: 60px;
     width: 111px;
     height: 138px;
   }
   .item-btn {
-    margin-left: 53px;
-    margin-top: -170px;
+    margin-left: 45px;
     gap: 30px;
   }
   .item-quantity {
@@ -651,7 +785,7 @@ export default {
     height: 40px;
     transform: rotate(-22deg);
     top: 85px;
-    right: 3px;
+    right: -10px;
   }
   .quantity-numder {
     font-size: 25px;
@@ -671,6 +805,732 @@ export default {
   .product-positions {
     font-size: 13px;
     width: 100px;
+  }
+  .items-filter {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  .item-filter {
+    display: grid;
+    justify-content: center;
+    width: 160px;
+    height: 315px;
+  }
+  .active-catalog-mirror {
+    width: 120px;
+    height: 170px;
+  }
+  .active-catalog_title {
+    font-size: 22px;
+  }
+  .active-catalog_text {
+    font-size: 14px;
+  }
+  .active-catalog-content {
+    height: 50px;
+    margin-top: 20px;
+    margin-bottom: 13px;
+  }
+  .border-line {
+    border: 1px solid rgba(217, 255, 90, 1);
+    width: 148px;
+    height: 1px;
+  }
+  .amount-result {
+    font-size: 16px;
+    letter-spacing: 0.5px;
+  }
+  .currency-line {
+    font-size: 13px;
+    top: 0;
+    left: 50px;
+  }
+  .btn-union {
+    display: flex;
+    justify-content: center;
+    height: 22px;
+  }
+  .union-text {
+    margin-top: -3px;
+    font-size: 13px;
+    margin-left: 2px;
+    font-weight: 100;
+  }
+  .union {
+    width: 15px;
+    height: 15px;
+    margin-top: 0;
+  }
+  .amount {
+    margin-top: 10px;
+  }
+}
+@media (max-width: 768px) {
+  .container-fluid {
+    padding: 0 30px 0 30px;
+  }
+  .catalog-title {
+    font-size: 30px;
+    justify-content: left;
+  }
+  .items {
+    margin-top: 35px;
+    margin-bottom: 0;
+    height: 400px;
+  }
+  .image-subtarct {
+    width: 305px;
+    height: 356px;
+  }
+  .item {
+    width: 339px;
+    height: 356px;
+  }
+  .item-subtract {
+    overflow: hidden;
+    width: 100%;
+    justify-items: left;
+    height: 400px;
+  }
+  .item-title {
+    font-size: 18px;
+    width: 99px;
+    height: 39px;
+  }
+  .image-mirror {
+    margin-top: 0;
+    width: 200px;
+    height: 218px;
+  }
+  .item-btn {
+    display: grid;
+    justify-self: center;
+    align-content: center;
+    margin-left: -30px;
+    margin-top: 50px;
+    gap: 40px;
+    height: 356px;
+  }
+  .item-quantity {
+    width: 66px;
+    height: 60px;
+    transform: rotate(-22deg);
+    top: 115px;
+    right: 5px;
+  }
+  .quantity-numder {
+    font-size: 26px;
+  }
+  .quantity-text {
+    font-size: 14px;
+  }
+  .subtract-btn {
+    width: 80px;
+    height: 80px;
+  }
+  .arrow-bottom img {
+    width: 15px;
+    height: 19px;
+    margin-top: -20px;
+  }
+  .product-positions {
+    font-size: 13px;
+    width: 100px;
+  }
+  /* ActiveCatalog */
+  .btn-position {
+    margin-top: 51px;
+    height: 203px;
+    display: grid;
+    justify-items: center;
+    align-content: center;
+  }
+  .btn {
+    cursor: pointer;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    width: 319px;
+    height: 135px;
+    border: 2px solid rgba(217, 255, 90, 1);
+    border-radius: 50%;
+    transform: rotate(-13deg);
+    background: rgba(255, 255, 255, 0.19);
+  }
+  .btn:active {
+    border: 2px solid white;
+  }
+  .btn-text {
+    display: grid;
+    align-items: center;
+    height: 40px;
+    font-size: 20px;
+    font-family: "Euclid Circular A", sans-serif;
+    color: white;
+    font-weight: 500;
+    text-align: center;
+    transform: rotate(13deg);
+    margin-bottom: -60px;
+  }
+  .column-arrow img {
+    transform: rotate(13deg);
+    color: rgba(217, 255, 90, 1);
+    height: 25px;
+  }
+  .union-text {
+    font-size: 20px;
+    font-family: "Euclid Circular A", sans-serif;
+    color: white;
+    font-weight: 500;
+    margin-left: 11px;
+    text-align: center;
+    cursor: pointer;
+  }
+  .active-catalog {
+    margin-top: 63px;
+    height: 100%;
+  }
+  .active-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 73px;
+  }
+  .filter {
+    font-size: 16px;
+    font-family: "Euclid Circular A", sans-serif;
+    color: rgba(255, 255, 255, 1);
+    text-transform: uppercase;
+  }
+  .image-filter {
+    width: 21px;
+    height: 22px;
+    margin-right: 11px;
+  }
+  .product-positions {
+    font-size: 12px;
+  }
+  .item-filter {
+    display: grid;
+    justify-content: center;
+    width: 275px;
+    height: 415px;
+  }
+  .items-filter {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 107px;
+  }
+  .image-main {
+    display: flex;
+    justify-content: center;
+    margin-left: -34px;
+  }
+  .color {
+    width: 17px;
+    height: 17px;
+    border: 3px solid rgba(255, 255, 255, 1);
+    border-radius: 50%;
+    margin-right: 18px;
+    margin-left: -5px;
+  }
+  .border-line {
+    border: 1px solid rgba(217, 255, 90, 1);
+    background: rgba(217, 255, 90, 1);
+    width: 274px;
+  }
+  .active-catalog-content {
+    display: grid;
+    justify-content: center;
+    text-align: center;
+    color: rgba(255, 255, 255, 1);
+    font-family: "Euclid Circular A", sans-serif;
+    margin-top: 32px;
+    margin-bottom: 17px;
+  }
+  .active-catalog_title {
+    font-size: 26px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .active-catalog_text {
+    font-size: 16px;
+  }
+  .active-catalog-mirror {
+    /* height: 240px; */
+    width: 140px;
+  }
+  .amount-result {
+    font-weight: 400;
+    font-family: "Floreste Wavy", sans-serif;
+    font-size: 28px;
+    color: rgba(255, 255, 255, 1);
+    letter-spacing: 3px;
+    position: relative;
+    margin-top: -3px;
+  }
+  .currency-line {
+    font-size: 20px;
+    position: absolute;
+    top: 3px;
+    left: 97px;
+  }
+  .union {
+    width: 20px;
+    height: 20px;
+    margin-top: 0;
+  }
+  .amount {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+  }
+}
+@media (max-width: 430px) {
+  .container-fluid {
+    padding: 0 14px 0 14px;
+    margin-top: 120px;
+  }
+  .catalog-title {
+    font-size: 30px;
+    justify-content: left;
+  }
+  .items {
+    margin-top: 35px;
+    margin-bottom: 0;
+    height: 440px;
+  }
+  .image-subtarct {
+    width: 380px;
+    height: 400px;
+  }
+  .item {
+    width: 380px;
+    height: 400px;
+  }
+  .item-subtract {
+    overflow: hidden;
+    width: 100%;
+    justify-items: left;
+    height: 440px;
+  }
+  .item-title {
+    font-size: 23px;
+    width: 120px;
+    height: 39px;
+  }
+  .image-mirror {
+    margin-top: 40px;
+    width: 210px;
+    height: 230px;
+  }
+  .item-btn {
+    margin-left: 4px;
+    gap: 30px;
+  }
+  .item-quantity {
+    width: 66px;
+    height: 60px;
+    transform: rotate(-22deg);
+    top: 133px;
+    right: -15px;
+  }
+  .quantity-numder {
+    font-size: 30px;
+  }
+  .quantity-text {
+    font-size: 15px;
+  }
+  .subtract-btn {
+    width: 76px;
+    height: 76px;
+  }
+  .arrow-bottom img {
+    width: 15px;
+    height: 19px;
+    margin-top: -20px;
+  }
+  .product-positions {
+    font-size: 13px;
+    width: 100px;
+  }
+  /* ActiveCatalog */
+  .btn-position {
+    margin-top: 51px;
+    height: 203px;
+    display: grid;
+    justify-items: center;
+    align-content: center;
+  }
+  .btn {
+    cursor: pointer;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    width: 319px;
+    height: 135px;
+    border: 2px solid rgba(217, 255, 90, 1);
+    border-radius: 50%;
+    transform: rotate(-13deg);
+    background: rgba(255, 255, 255, 0.19);
+  }
+  .btn:active {
+    border: 2px solid white;
+  }
+  .btn-text {
+    display: grid;
+    align-items: center;
+    height: 40px;
+    font-size: 20px;
+    font-family: "Euclid Circular A", sans-serif;
+    color: white;
+    font-weight: 500;
+    text-align: center;
+    transform: rotate(13deg);
+    margin-bottom: -60px;
+  }
+  .column-arrow img {
+    transform: rotate(13deg);
+    color: rgba(217, 255, 90, 1);
+    height: 25px;
+  }
+  .union-text {
+    font-size: 20px;
+    font-family: "Euclid Circular A", sans-serif;
+    color: white;
+    font-weight: 500;
+    margin-left: 11px;
+    text-align: center;
+    cursor: pointer;
+  }
+  .active-catalog {
+    margin-top: 63px;
+    height: 100%;
+  }
+  .active-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 73px;
+  }
+  .filter {
+    font-size: 16px;
+    font-family: "Euclid Circular A", sans-serif;
+    color: rgba(255, 255, 255, 1);
+    text-transform: uppercase;
+  }
+  .image-filter {
+    width: 21px;
+    height: 22px;
+    margin-right: 11px;
+  }
+  .product-positions {
+    font-size: 12px;
+  }
+  .item-filter {
+    display: grid;
+    justify-content: center;
+    width: 275px;
+    height: 415px;
+  }
+  .items-filter {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 107px;
+  }
+  .image-main {
+    display: flex;
+    justify-content: center;
+    margin-left: -34px;
+  }
+  .color {
+    width: 17px;
+    height: 17px;
+    border: 3px solid rgba(255, 255, 255, 1);
+    border-radius: 50%;
+    margin-right: 18px;
+    margin-left: -5px;
+  }
+  .border-line {
+    border: 1px solid rgba(217, 255, 90, 1);
+    background: rgba(217, 255, 90, 1);
+    width: 274px;
+  }
+  .active-catalog-content {
+    display: grid;
+    justify-content: center;
+    text-align: center;
+    color: rgba(255, 255, 255, 1);
+    font-family: "Euclid Circular A", sans-serif;
+    margin-top: 32px;
+    margin-bottom: 17px;
+  }
+  .active-catalog_title {
+    font-size: 26px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .active-catalog_text {
+    font-size: 16px;
+  }
+  .active-catalog-mirror {
+    /* height: 240px; */
+    width: 140px;
+  }
+  .amount-result {
+    font-weight: 400;
+    font-family: "Floreste Wavy", sans-serif;
+    font-size: 28px;
+    color: rgba(255, 255, 255, 1);
+    letter-spacing: 3px;
+    position: relative;
+    margin-top: -3px;
+  }
+  .currency-line {
+    font-size: 20px;
+    position: absolute;
+    top: 3px;
+    left: 97px;
+  }
+  .union {
+    width: 20px;
+    height: 20px;
+    margin-top: 0;
+  }
+  .amount {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+  }
+}
+@media (max-width: 400px) {
+  .container-fluid {
+    padding: 0 14px 0 14px;
+    margin-top: 120px;
+  }
+  .catalog-title {
+    font-size: 30px;
+    justify-content: left;
+  }
+  .items {
+    margin-top: 35px;
+    margin-bottom: 0;
+    height: 288px;
+  }
+  .image-subtarct {
+    width: 236px;
+    height: 256px;
+  }
+  .item {
+    width: 236px;
+    height: 288px;
+  }
+  .item-subtract {
+    overflow: hidden;
+    width: 100%;
+    justify-items: left;
+    height: 288px;
+  }
+  .item-title {
+    font-size: 15px;
+    width: 99px;
+    height: 39px;
+  }
+  .image-mirror {
+    margin-top: -10px;
+    width: 111px;
+    height: 138px;
+  }
+  .item-btn {
+    margin-left: 0px;
+    margin-top: 0px;
+    gap: 30px;
+  }
+  .item-quantity {
+    width: 46px;
+    height: 40px;
+    transform: rotate(-22deg);
+    top: 83px;
+    right: -20px;
+  }
+  .quantity-numder {
+    font-size: 25px;
+  }
+  .quantity-text {
+    font-size: 10px;
+  }
+  .subtract-btn {
+    width: 56px;
+    height: 56px;
+  }
+  .arrow-bottom img {
+    width: 15px;
+    height: 19px;
+    margin-top: -20px;
+  }
+  .product-positions {
+    font-size: 13px;
+    width: 100px;
+  }
+  /* ActiveCatalog */
+  .btn-position {
+    margin-top: 51px;
+    height: 203px;
+    display: grid;
+    justify-items: center;
+    align-content: center;
+  }
+  .btn {
+    cursor: pointer;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    width: 319px;
+    height: 135px;
+    border: 2px solid rgba(217, 255, 90, 1);
+    border-radius: 50%;
+    transform: rotate(-13deg);
+    background: rgba(255, 255, 255, 0.19);
+  }
+  .btn:active {
+    border: 2px solid white;
+  }
+  .btn-text {
+    display: grid;
+    align-items: center;
+    height: 40px;
+    font-size: 20px;
+    font-family: "Euclid Circular A", sans-serif;
+    color: white;
+    font-weight: 500;
+    text-align: center;
+    transform: rotate(13deg);
+    margin-bottom: -60px;
+  }
+  .column-arrow img {
+    transform: rotate(13deg);
+    color: rgba(217, 255, 90, 1);
+    height: 25px;
+  }
+  .union-text {
+    font-size: 20px;
+    font-family: "Euclid Circular A", sans-serif;
+    color: white;
+    font-weight: 500;
+    margin-left: 11px;
+    text-align: center;
+    cursor: pointer;
+  }
+  .active-catalog {
+    margin-top: 63px;
+    height: 100%;
+  }
+  .active-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 73px;
+  }
+  .filter {
+    font-size: 16px;
+    font-family: "Euclid Circular A", sans-serif;
+    color: rgba(255, 255, 255, 1);
+    text-transform: uppercase;
+  }
+  .image-filter {
+    width: 21px;
+    height: 22px;
+    margin-right: 11px;
+  }
+  .product-positions {
+    font-size: 12px;
+  }
+  .item-filter {
+    display: grid;
+    justify-content: center;
+    width: 275px;
+    height: 355px;
+    margin-bottom: 0px;
+  }
+  .items-filter {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 90px;
+  }
+  .image-main {
+    display: flex;
+    justify-content: center;
+    margin-left: -34px;
+  }
+  .color {
+    width: 17px;
+    height: 17px;
+    border: 3px solid rgba(255, 255, 255, 1);
+    border-radius: 50%;
+    margin-right: 18px;
+    margin-left: -5px;
+  }
+  .border-line {
+    border: 1px solid rgba(217, 255, 90, 1);
+    background: rgba(217, 255, 90, 1);
+    width: 274px;
+  }
+  .active-catalog-content {
+    display: grid;
+    justify-content: center;
+    text-align: center;
+    color: rgba(255, 255, 255, 1);
+    font-family: "Euclid Circular A", sans-serif;
+    margin-top: 32px;
+    margin-bottom: 17px;
+  }
+  .active-catalog_title {
+    font-size: 26px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .active-catalog_text {
+    font-size: 16px;
+  }
+  .active-catalog-mirror {
+    width: 130px;
+  }
+  .amount-result {
+    font-weight: 400;
+    font-family: "Floreste Wavy", sans-serif;
+    font-size: 28px;
+    color: rgba(255, 255, 255, 1);
+    letter-spacing: 3px;
+    position: relative;
+    margin-top: -3px;
+  }
+  .currency-line {
+    font-size: 20px;
+    position: absolute;
+    top: 3px;
+    left: 97px;
+  }
+  .union {
+    width: 20px;
+    height: 20px;
+    margin-top: 0;
+  }
+  .amount {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0px;
   }
 }
 @media (max-width: 321px) {
