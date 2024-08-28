@@ -901,9 +901,9 @@ export default {
     height: 39px;
   }
   .image-mirror {
-    margin-top: 0;
-    width: 200px;
-    height: 218px;
+    margin-top: 20px;
+    width: 180px;
+    height: 200px;
   }
   .item-btn {
     display: grid;
@@ -1126,9 +1126,9 @@ export default {
     height: 39px;
   }
   .image-mirror {
-    margin-top: 40px;
-    width: 210px;
-    height: 230px;
+    margin-top: 50px;
+    width: 190px;
+    height: 220px;
   }
   .item-btn {
     margin-left: 4px;
@@ -1329,6 +1329,7 @@ export default {
   .image-subtarct {
     width: 236px;
     height: 256px;
+    
   }
   .item {
     width: 236px;
@@ -1534,6 +1535,10 @@ export default {
   }
 }
 @media (max-width: 321px) {
+  .container-fluid {
+    padding: 0 14px 0 34px;
+    margin-top: 120px;
+  }
   .btn {
     cursor: pointer;
     display: grid;
