@@ -124,9 +124,9 @@ export default {
         this.slidesToShow = 3;
        } else if (screenWidth >= 1820) {
         this.slidesToShow = 3;
-      } else if (screenWidth >= 1240) {
+      } else if (screenWidth >= 1020) {
         this.slidesToShow = 2;
-      } else if (screenWidth <= 1024) {
+      } else if (screenWidth <= 768) {
         this.slidesToShow = 1;
       }
     },
@@ -281,40 +281,41 @@ export default {
  @media (max-width: 1024px) {
   
   .post-shape {
-    width: 760px;
-    height: 400px;
+    width: 430px;
+    height: 310px;
   }
   .blog-content{
     height: 450px;
   }
   .box-content {
-    width: 755px;
-    height: 400px;
+    width: 420px;
+    height: 310px;
   }
   .post {
-    width: 420px;
-    height: 450px;
+    width: 450px;
+    height: 310px;
   }
   .post-image {
-    width: 340px;
-    height: 375px;
+    width: 190px;
+    height: 290px;
   }
   .box-text {
-    width: 370px;
-    height: 400px;
-    padding: 30px;
+    width: 215px;
+    height: 310px;
+    padding: 20px;
   }
   .post-author {
-    width: 310px;
+    width: 170px;
+    height: 40px;
   }
   .author-name{
     font-size: 16px;
     line-height: 20px;
   }
   .post-title{
-    font-size: 37px;
-    width: 310px;
-    line-height: 37px;
+    font-size: 24px;
+    width: 180px;
+    line-height: 30px;
     height: 180px;
     display: grid;
     align-items: center;
@@ -322,17 +323,17 @@ export default {
   .post-data{
     width: 100px;
     line-height: 20px;
-    height: 80px;
+    height: 40px;
   }
   .post-time {
-    width: 127px;
-    height: 100px;
-    bottom: 10px;
-    left: 165px;
-    font-size: 23px;
+    width: 77px;
+    height: 75px;
+    bottom: -30px;
+    left: 95px;
+    font-size: 20px;
   }
   .time {
-    font-size: 40px;
+    font-size: 35px;
     height: 30px;
     font-weight: 400;
   }

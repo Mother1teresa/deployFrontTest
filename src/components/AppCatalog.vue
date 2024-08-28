@@ -743,7 +743,6 @@ export default {
     left: 80px;
   }
 }
-
 @media (max-width: 1024px) {
   .catalog-title {
     font-size: 34px;
@@ -811,7 +810,7 @@ export default {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
+    gap: 40px;
   }
   .item-filter {
     display: grid;
@@ -1314,8 +1313,9 @@ export default {
 }
 @media (max-width: 400px) {
   .container-fluid {
-    padding: 0 14px 0 14px;
+    padding: 0 50px 0 70px;
     margin-top: 120px;
+
   }
   .catalog-title {
     font-size: 30px;
@@ -1395,8 +1395,8 @@ export default {
     display: grid;
     align-items: center;
     justify-content: center;
-    width: 319px;
-    height: 135px;
+    width: 250px;
+    height: 115px;
     border: 2px solid rgba(217, 255, 90, 1);
     border-radius: 50%;
     transform: rotate(-13deg);
@@ -1409,13 +1409,13 @@ export default {
     display: grid;
     align-items: center;
     height: 40px;
-    font-size: 20px;
+    font-size: 18px;
     font-family: "Euclid Circular A", sans-serif;
     color: white;
     font-weight: 500;
     text-align: center;
     transform: rotate(13deg);
-    margin-bottom: -60px;
+    margin-bottom: -50px;
   }
   .column-arrow img {
     transform: rotate(13deg);
@@ -1440,6 +1440,8 @@ export default {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 73px;
+    width: 300px;
+    margin-left: -20px;
   }
   .filter {
     font-size: 16px;
@@ -1544,8 +1546,8 @@ export default {
     display: grid;
     align-items: center;
     justify-content: center;
-    width: 280px;
-    height: 135px;
+    width: 250px;
+    height: 115px;
     border: 2px solid rgba(217, 255, 90, 1);
     border-radius: 50%;
     transform: rotate(-13deg);
