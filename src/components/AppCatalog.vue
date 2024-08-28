@@ -1554,7 +1554,7 @@ export default {
     background: rgba(255, 255, 255, 0.19);
   }
   .catalog-title {
-    font-size: 30px;
+    font-size: 23px;
     justify-content: left;
     width: 230px;
   }
