@@ -1298,10 +1298,24 @@ export default {
     display: flex;
     justify-content: space-around;
   }
+  .btn-active {
+    margin-left: 15px;
+    width: 180px !important;
+    height: 80px !important;
+  }
+  .btn-union-active {
+    width: 180px !important;
+    height: 80px !important;
+    top: -1px !important;
+    transform: rotate(-10deg) !important;
+  }
+  .btn-text-active {
+    font-size: 14px !important;
+  }
   .btn {
     text-align: center;
     position: absolute;
-    bottom: 180px;
+    bottom: 190px;
     right: 30px;
     width: 180px;
     height: 78px;
@@ -1536,7 +1550,7 @@ export default {
   .modal-image {
     width: 260px;
     height: 360px;
-    margin-top: -330px;
+    margin-top: -310px;
   }
   .modal-price {
     height: 50px;
@@ -1550,9 +1564,7 @@ export default {
     width: 320px;
   }
   .modal-active {
-    font-size: 230px !important;
-    margin-top: -150px;
-    margin-bottom: 10px;
+    font-size: 160px !important;
     height: 210px !important;
     z-index: -2;
   }
@@ -1591,6 +1603,9 @@ export default {
   .body-content {
     margin-top: 10px;
   }
+  .info-color{
+    margin-top: 72px;
+  }
 }
 @media (max-width: 1440px) {
   .content-mian {
@@ -1600,7 +1615,7 @@ export default {
   .modal-image {
     width: 260px;
     height: 334px;
-    margin-top: -170px;
+    margin-top: -330px;
   }
   .info-title {
     margin-top: 20px;
@@ -1659,7 +1674,7 @@ export default {
   }
   .body-content_text {
     line-height: 18px;
-    height: 100px;
+    height: 80px;
     font-size: 17px;
     width: 300px;
   }
@@ -1695,8 +1710,8 @@ export default {
   }
   .modal-active {
     font-size: 170px !important;
-    margin-top: -210px;
-    margin-bottom: 10px;
+    margin-top: -100px;
+    margin-bottom: 0px;
   }
   .info-favorite {
     width: 50px;
@@ -1807,7 +1822,7 @@ export default {
     height: 50px;
   }
 }
-@media (max-width: 786px) {
+@media (max-width: 768px) {
   .modal-image {
     width: 220px;
     height: 304px;
@@ -1827,16 +1842,16 @@ export default {
   .btn-active {
     margin-left: 15px;
     width: 180px !important;
-    height: 60px !important;
+    height: 80px !important;
   }
   .btn-union-active {
     width: 180px !important;
-    height: 60px !important;
+    height: 80px !important;
     top: -1px !important;
-    transform: rotate(-11deg) !important;
+    transform: rotate(-10deg) !important;
   }
   .btn-text-active {
-    font-size: 12px !important;
+    font-size: 14px !important;
   }
   .modal-active {
     margin-top: -10px;
@@ -1866,10 +1881,11 @@ export default {
   }
   .body-content_image {
     width: 200px;
+    height: 90px;
   }
   .modal-title {
     font-size: 40px;
-    height: 50px;
+    height: 40px;
     width: 160px;
     margin-bottom: 10px;
   }
@@ -1885,7 +1901,7 @@ export default {
   .info-color {
     width: 60px;
     gap: 5px;
-    margin-top: 35px;
+    margin-top: 50px;
     flex-wrap: wrap;
   }
   .modal-active {
@@ -1897,6 +1913,10 @@ export default {
   }
   .info-favorite {
     margin-bottom: 40px;
+  }
+  .union{
+    width: 20px;
+    height: 20px;
   }
 }
 @media (max-width: 430px) {
@@ -1917,9 +1937,9 @@ export default {
     height: auto;
   }
   .modal-image {
-    margin-top: -250px;
-    width: 220px;
-    height: 304px;
+    width: 150px;
+    height: 184px;
+    margin-top: -200px;
   }
   .close{
     font-size: 12px;
@@ -1944,12 +1964,12 @@ export default {
   }
   .btn-active {
     margin-top: 12px;
-    width: 207px !important;
-    height: 90px !important;
+    width: 147px !important;
+    height: 70px !important;
   }
   .btn-union-active {
-    width: 207px !important;
-    height: 90px !important;
+    width: 147px !important;
+    height: 70px !important;
     top: -1px !important;
     transform: rotate(-11deg) !important;
   }
@@ -1960,7 +1980,7 @@ export default {
     margin-top: -80px;
     display: grid;
     justify-content: center;
-    font-size: 70px !important;
+    font-size: 60px !important;
     width: 100% !important;
     height: 130px !important;
   }
@@ -2017,6 +2037,10 @@ export default {
     font-size: 13px;
     line-height: 20px;
   }
+  .union{
+    width: 15px;
+    height: 15px;
+  }
 }
 @media (max-width: 320px) {
   .modal-active {
@@ -2040,25 +2064,27 @@ export default {
     margin-top: 20px;
   }
   .btn-active {
-    margin-top: 12px;
-    width: 127px !important;
-    height: 45px !important;
+    width: 137px !important;
+    height: 60px !important;
   }
   .btn-union-active {
-    width: 127px !important;
-    height: 45px !important;
+    width: 137px !important;
+    height: 60px !important;
     top: -1px !important;
-    transform: rotate(-11deg) !important;
+    transform: rotate(-9deg) !important;
   }
   .btn-text-active {
-    font-size: 10px !important;
+    font-size: 13px !important;
   }
   .union{
-    width: 10px;
-    height: 10px;
+    width: 13px;
+    height: 13px;
   }
   .info-top {
-    margin-bottom: 150px;
+    margin-bottom: 100px;
+  }
+  .info-bottom{
+    margin-top: 0;
   }
   .info-title {
     margin-top: 10px;
