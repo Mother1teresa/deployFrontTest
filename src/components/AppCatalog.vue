@@ -1097,7 +1097,7 @@ export default {
     margin-top: 120px;
   }
   .catalog-title {
-    font-size: 30px;
+    font-size: 38px;
     justify-content: left;
   }
   .items {
@@ -1315,11 +1315,11 @@ export default {
   .container-fluid {
     padding: 0 50px 0 70px;
     margin-top: 120px;
-
   }
   .catalog-title {
-    font-size: 30px;
-    justify-content: left;
+    font-size: 37px;
+    justify-content: center;
+    width: 230px;
   }
   .items {
     margin-top: 35px;
@@ -1552,6 +1552,11 @@ export default {
     border-radius: 50%;
     transform: rotate(-13deg);
     background: rgba(255, 255, 255, 0.19);
+  }
+  .catalog-title {
+    font-size: 30px;
+    justify-content: left;
+    width: 230px;
   }
 }
 </style>

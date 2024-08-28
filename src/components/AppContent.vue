@@ -1806,7 +1806,7 @@ export default {
   }
   .info-color {
     width: 60px;
-    margin-top: 30px;
+    margin-top: 85px;
     gap: 5px;
     flex-wrap: wrap;
   }
@@ -1864,12 +1864,12 @@ export default {
     margin-top: 20px;
     margin-left: -25px;
   }
-  .info-bottom {
+  /* .info-bottom {
     margin-top: 50px;
   }
   .info-top {
     margin-bottom: 55px;
-  }
+  } */
   .close-button {
     top: 20px;
     right: 20px;
@@ -1901,7 +1901,7 @@ export default {
   .info-color {
     width: 60px;
     gap: 5px;
-    margin-top: 50px;
+    margin-top: 60px;
     flex-wrap: wrap;
   }
   .modal-active {
